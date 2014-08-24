@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width" /><!-- Do not change this! -->
+
+                <!-- Stylesheets -->
+                <!-- jQuery and jQuery Mobile -->
+                <link rel="stylesheet" type="text/css" href="./themes/AndroidHolo.min.css" /><!-- ThemeRoller theme -->
+                <link rel="stylesheet" type="text/css" href="./themes/jquery.mobile.icons-1.4.2.min.css" />
+                <link rel="stylesheet" type="text/css" href="./themes/jquery.mobile.structure-1.4.2.min.css" />
+
+                <!-- jpHolo theme -->
+                <link rel="stylesheet" type="text/css" href="./themes/jpholo.css" />
+                <link rel="stylesheet" type="text/css" href="./themes/jpholo.splitview.css" />
+                <link rel="stylesheet" type="text/css" href="./themes/jpholo.tablet.css" id="sizeStylesheet" />
+
+                <!-- JavaScript -->
+
+                <script type="text/javascript" src="cordova.js"></script>
+                <script type="text/javascript" charset="utf-8" src="phonegap-3.5.0.js"></script>
+                <!-- Cordova PhoneGap --><!-- exclude the scripts below if you are not deploying with PhoneGap -->
+                <script type="text/javascript" src="./backgroundService-3.1.0.js"></script>
+                <script type="text/javascript" src="./cordova_custom_plugins.js"></script>
+
+                <!-- jQuery -->
+                <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
+
+                <!-- jQuery Mobile -->
+                <script type="text/javascript" src="./js/jquery.mobile.settings.js"></script><!-- this must be loaded before jQuery Mobile -->
+                <script type="text/javascript" src="./js/jquery.mobile-1.4.2.min.js"></script>
+
+                <!-- Other frameworks -->
+                <script type="text/javascript" src="./js/fastclick.js"></script><!-- for speeding op tap events, load this AFTER jQuery Mobile -->
+                <script type="text/javascript" src="./js/i18next-1.7.3.min.js"></script><!-- for multi language -->
+
+                <!-- Application -->
+                <!-- Set document, used in jpholo.core.js -->
+                <script type="text/javascript">
+                        window.indexFile = "index.html";
+                        window.phonegapExcluded = true; // set this value to either true or false, depending on if you load the Cordova PhoneGap scripts.
+                </script>
+                <!-- jpHolo core -->
+                <script type="text/javascript" src="./js/jpholo.core.js"></script>
+                <script type="text/javascript" src="./js/jpholo.core.services.js"></script>
+                <!-- your scripts -->
+
+                <title>jpHolo</title>
+        </head>
+        <body height="100%">
+                <div id="indexPage" data-role="page" data-theme="a"><!-- id to tie the page event to this specific page -->
+
+                        <!-- left panel  -->
+                        <div id="panelMenuIndex" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuIndexUL" data-role="listview"></ul>
+                        </div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+                        <!-- /panel -->
+
+                        <!-- right panel  -->
+                        <div id="panelMenuRightIndex" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuRightIndexUL" data-role="listview"></ul>
+                        </div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+                        <!-- /panel -->
+
+                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+                                <div>
+                                        <p class="headerBarText"><img id="headerTitleIndex" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchIndex" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareIndex" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowIndex" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        &nbsp;</p>
+                                </div><!-- populate the panel menu, also with the id Index in this case -->
+                        </div><!-- /header -->
+
+                        <div role="main" class="ui-content" data-theme="a">
+
+                                <div class="content-secondary">
+
+                                        <h1>Aktienfreunde</h1>
+                                        <ul>
+                                        <li>Einfache Analysen</li>
+                                        <li>Tolle Statistiken</li>
+                                        <li>Watchlisten teilen</li>
+                                        <li>Mit Freunden diskutieren</li>
+                                        </ul>
+
+                                        <p>Wir sind keine Bank, kein Broker und kein neues Haushaltsbuch. Wir bieten eine bessere &Uuml;bersicht.</p>
+
+
+                                </div><!-- /contentsecundary -->
+
+                                <div class="content-primary">
+
+                                        <h1>Deine kostenlose Depot- und Portfolio&uuml;bersicht.</h1>
+                                        <p>Aktien kaufen wird immer einfacher - wieso nicht auch die Verm&ouml;gensverwaltung?</p>
+                                        <p><img src="./images/aktenfreunde_screenshots.jpg" alt="" border="0" width="100%" height=""></p>
+                                        <p>Diese App befindet sich noch im Aufbau. Zurzeit ist die Nutzung leider nur bei einer bestehenden Internetverbindung m&ouml;glich. Wir bitten um Verst&auml;ndnis.</p>
+
+                                </div><!-- /contentprimary -->
+
+                        </div><!-- /content -->
+
+                </div><!-- /page -->
+
+                <div id="investPage" data-role="page" data-theme="a">
+
+                        <!-- left panel  -->
+                        <div id="panelMenuInvest" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuInvestUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <!-- right panel  -->
+                        <div id="panelMenuRightInvest" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuRightInvestUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+                                <div>
+                                        <p class="headerBarText"><img id="headerTitleInvest" class="headerIconTitle" src="./images/icons/ic_launcher_full_arrow.png" /><img id="headerShareInvest" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowInvest" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        &nbsp;</p>
+                                </div>
+                        </div><!-- /header -->
+
+                        <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
+
+                                   <div id="siteloader1" style="height:99%;"></div>
+                               <script>
+        $("#siteloader1")
+            .html('<object data="http://aktienfreunde.net/investment/list" id="site1" style="width: 100%;height:100%;"/></object>');
+</script>
+                        </div><!-- /content -->
+
+                </div><!-- /page -->
+
+                <div id="statsPage" data-role="page" data-theme="a">
+
+                        <!-- left panel  -->
+                        <div id="panelMenuStats" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuStatsUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <!-- right panel  -->
+                        <div id="panelMenuRightStats" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuRightStatsUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+                                <div>
+                                        <p class="headerBarText"><img id="headerTitleStats" class="headerIconTitle" src="./images/icons/ic_launcher_full_arrow.png" /><img id="headerShareStats" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowStats" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        &nbsp;</p>
+                                </div>
+                        </div><!-- /header -->
+
+                        <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
+
+                                   <div id="siteloader2" style="height:99%;"></div>
+                               <script>
+        $("#siteloader2")
+            .html('<object data="http://aktienfreunde.net/statistic/index" id="site2" style="width: 100%;height:100%;"/></object>');
+</script>
+
+                        </div><!-- /content -->
+
+                </div><!-- /page -->
+
+                <div id="listsPage" data-role="page" data-theme="a">
+
+                        <!-- left panel  -->
+                        <div id="panelMenuLists" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuListsUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <!-- right panel  -->
+                        <div id="panelMenuRightLists" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuRightListsUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+                                <div>
+                                        <p class="headerBarText"><img id="headerTitleLists" class="headerIconTitle" src="./images/icons/ic_launcher_full_arrow.png" /><img id="headerShareLists" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowLists" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        &nbsp;</p>
+                                </div>
+                        </div><!-- /header -->
+
+                        <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
+
+                                   <div id="siteloader3" style="height:99%;"></div>
+                               <script>
+        $("#siteloader3")
+            .html('<object data="http://aktienfreunde.net/watchlist/show" id="site3" style="width: 100%;height:100%;"/></object>');
+</script>
+
+                        </div><!-- /content -->
+
+                </div><!-- /page -->
+
+                <div id="blogPage" data-role="page" data-theme="a">
+
+                        <!-- left panel  -->
+                        <div id="panelMenuBlog" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuBlogUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <!-- right panel  -->
+                        <div id="panelMenuRightBlog" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuRightBlogUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+                                <div>
+                                        <p class="headerBarText"><img id="headerTitleBlog" class="headerIconTitle" src="./images/icons/ic_launcher_full_arrow.png" /><img id="headerShareBlog" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowBlog" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        &nbsp;</p>
+                                </div>
+                        </div><!-- /header -->
+
+                        <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
+
+
+                                   <div id="siteloader4" style="height:99%;"></div>
+                               <script>
+        $("#siteloader4")
+            .html('<object data="http://blog.aktienfreunde.net/" id="site4" style="width: 100%;height:100%;"/></object>');
+</script>
+
+                        </div><!-- /content -->
+
+                </div><!-- /page -->
+
+                <div id="otherPage" data-role="page" data-theme="a">
+
+                        <!-- left panel  -->
+                        <div id="panelMenuOther" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuOtherUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <!-- right panel  -->
+                        <div id="panelMenuRightOther" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuRightOtherUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+                                <div>
+                                        <p class="headerBarText"><img id="headerTitleOther" class="headerIconTitle" src="./images/icons/ic_launcher_full_arrow.png" /><img id="headerShareOther" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowOther" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        &nbsp;</p>
+                                </div>
+                        </div><!-- /header -->
+
+                        <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
+
+                                   <div id="siteloader5" style="height:99%;"></div>
+
+                               <script>
+        $("#siteloader5")
+            .html('<object data="http://aktienfreunde.net/login/auth" id="site5" style="width: 100%;height:100%;"/></object>');
+</script>
+
+                        </div><!-- /content -->
+
+                </div><!-- /page -->
+
+                <div id="kontoPage" data-role="page" data-theme="a">
+
+                        <!-- left panel  -->
+                        <div id="panelMenuKonto" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuKontoUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <!-- right panel  -->
+                        <div id="panelMenuRightKonto" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuRightKontoUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+                                <div>
+                                        <p class="headerBarText"><img id="headerTitleKonto" class="headerIconTitle" src="./images/icons/ic_launcher_full_arrow.png" /><img id="headerShareKonto" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowKonto" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        &nbsp;</p>
+                                </div>
+                        </div><!-- /header -->
+
+                        <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
+
+
+                                   <div id="siteloader6" style="height:99%;"></div>
+                               <script>
+        $("#siteloader6")
+            .html('<object data="http://aktienfreunde.net/investment/showCashType" id="site6" style="width: 100%;height:100%;"/></object>');
+</script>
+
+                        </div><!-- /content -->
+
+                </div><!-- /page -->
+
+                <div id="profilPage" data-role="page" data-theme="a">
+
+                        <!-- left panel  -->
+                        <div id="panelMenuProfil" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuProfilUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <!-- right panel  -->
+                        <div id="panelMenuRightProfil" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuRightProfilUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+                                <div>
+                                        <p class="headerBarText"><img id="headerTitleProfil" class="headerIconTitle" src="./images/icons/ic_launcher_full_arrow.png" /><img id="headerShareProfil" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowProfil" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        &nbsp;</p>
+                                </div>
+                        </div><!-- /header -->
+
+                        <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
+
+
+                                   <div id="siteloader7" style="height:99%;"></div>
+                               <script>
+        $("#siteloader7")
+            .html('<object data="http://aktienfreunde.net/profile/show" id="site7" style="width: 100%;height:100%;"/></object>');
+</script>
+
+                        </div><!-- /content -->
+
+                </div><!-- /page -->
+
+                <div id="rechnerPage" data-role="page" data-theme="a">
+
+                        <!-- left panel  -->
+                        <div id="panelMenuRechner" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuRechnerUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <!-- right panel  -->
+                        <div id="panelMenuRightRechner" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuRightRechnerUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+                                <div>
+                                        <p class="headerBarText"><img id="headerTitleRechner" class="headerIconTitle" src="./images/icons/ic_launcher_full_arrow.png" /><img id="headerShareRechner" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowRechner" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        &nbsp;</p>
+                                </div>
+                        </div><!-- /header -->
+
+                        <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
+
+
+                                   <div id="siteloader8" style="height:99%;"></div>
+                               <script>
+        $("#siteloader8")
+            .html('<object data="http://aktienfreunde.net/interest/index" id="site8" style="width: 100%;height:100%;"/></object>');
+</script>
+
+                        </div><!-- /content -->
+
+                </div><!-- /page -->
+
+
+
+                <div id="impressumPage" data-role="page" data-theme="a"><!-- id to tie the page event to this specific page -->
+
+                        <!-- left panel  -->
+                        <div id="panelMenuImpressum" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuImpressumUL" data-role="listview"></ul>
+                        </div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+                        <!-- /panel -->
+
+                        <!-- right panel  -->
+                        <div id="panelMenuRightImpressum" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuRightImpressumUL" data-role="listview"></ul>
+                        </div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+                        <!-- /panel -->
+
+                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+                                <div>
+                                        <p class="headerBarText"><img id="headerTitleImpressum" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerShareImpressum" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowImpressum" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        &nbsp;</p>
+                                </div><!-- populate the panel menu, also with the id Index in this case -->
+                        </div><!-- /header -->
+
+                        <div role="main" class="ui-content" data-theme="a">
+
+                                <div class="content-secondary">
+
+                                        <h1>Impressum</h1>
+                                        <p> Der Autor hat diese App inklusive der Webseite entworfen um seine privaten Investments nachzuvollziehen. Der Autor stellt die Funktionalit&auml;t anderen Interessierten zur Verf&uuml;gung, &uuml;bernimmt aber keinerlei Garantie f&uuml;r korrekte Funktionalit&auml;t oder die Integrit&auml;t der gespeicherten Daten. Jeder ist eingeladen sich zu registrieren und die App sowie Webseite zum verwalten seiner Investments verwenden. aktienfreunde.net beh&auml;lt sich das Recht vor, Nutzer jederzeit von dieser Seite zu l&ouml;schen. aktienfreunde.net wird von diesem Recht nur im Falle von grobem Missbrauch oder unangemessenem Verhalten, insbesondere bei der Beleidigung von Nutzern, Gebrauch machen. Diese Seite dient ausschlie&szlig;lich nicht-kommerziellen Zwecken. Eine Nutzungsgeb&uuml;hr f&auml;llt nicht an.
+<br><br>Kontakt: <a href="mailto:info@aktienfreunde.net">info@aktienfreunde.net</a></p>
+<p>Verantwortlich f&uuml;r diese App und Webseite:</p>
+<p>Wolfram Stacklies<br>
+R&uuml;ckerstr. 1<br>
+10119 Berlin</p>
+<p>Florian Kling<br>
+De Fortuna 11<br>
+NL-7102ZZ Winterswijk</p>
+
+
+                                </div><!-- /contentsecundary -->
+
+                                <div class="content-primary">
+
+                                        <h1>Das Team</h1>
+                                        <h2>Florian Kling</h2>
+
+                        <p style="text-align: justify;">Von meiner Heimat, dem Nordschwarzwald bei Stuttgart aus, wurde ich nach dem Abitur Offizier bei der Bundeswehr. Zun&auml;chst habe ich in M&uuml;nchen meinen Bachelor und Master of Arts in Staats- und Sozialwissenschaften mit Schwerpunkt Internationales Recht und Politik erworben. Auch in der Makro&ouml;konomie habe ich unter Anderem zur aktuellen Finanz- und Wirtschaftskrise geforscht und geschrieben.</p>
+<p style="text-align: justify;">Heute lebe und arbeite ich mit meiner Frau in den Niederlanden im Grenzgebiet zu Deutschland. Seit der Jugend besch&auml;ftige ich mich leidenschaftlich mit den Finanzm&auml;rkten und bin in meiner Freizeit w&auml;hrend des Studiums richtig durchgestartet. Nach dem Finanztrading vor allem mit CFDs bin ich inzwischen ein konservativer Fundamentalinvestor, der in seiner Freizeit lange und gerne Wirtschaftsnachrichten studiert und Anlageentscheidungen trifft.</p>
+<p style="text-align: justify;">Meine Motivation, gemeinsam mit Wolfram an <em>Aktienfreunde</em> zu arbeiten, ist der Wunsch, noch mehr Menschen dazu anzuregen, sich selbst um ihre Finanzen und Altersvorsorge zu k&uuml;mmern. Das dazu notwendige Wissen und Know-How habe ich mir m&uuml;hevoll selbst beigebracht &#8211; Freunde und Interessierte sollen davon profitieren und es einfacher haben &#8211; ohne dabei unter die R&auml;der der Finanzindustrie zu kommen. Als Hobbyanleger hatte ich nie die technischen Mittel und die Zeit, um meine Investments immer so zu beobachten, wie ich das gerne getan h&auml;tte. Ohne die Hilfe von Finanzberatern und teurer Bezahlsoftware war ich auf der Suche nach einer Alternative und bin so auf Wolfram gesto&szlig;en, mit dem ich fortan gemeinsam an <em>Aktienfreunde</em> weitergearbeitet habe.</p>
+<p>Die Begeisterung, mein Ziel der finanziellen Freiheit zu verfolgen und mich unabh&auml;ngig von staatlichen Renten zu machen, soll sich in meinen Blogbeitr&auml;gen und auf dieser Homepage wiederspiegeln.</p>
+
+
+                                         <h2>Wolfram Stacklies</h2>
+
+                        <p style="text-align: justify;">Mein Schwager Henrik und ich, wir sind beide leidenschaftliche Investoren. Anfang 2013 hatte ich die Idee, eine kleine Seite zu &#8216;bauen&#8217; mit der wir unsere Aktienideen tauschen k&ouml;nnen &#8211; Die Aktienfreunde waren geboren.</p>
+<p style="text-align: justify;">Nach und nach kamen dann Auswertungen hinzu, die ich in den vielen Online-Watchlists vermisst habe. Mittlerweile haben wir eine sch&ouml;ne &Uuml;bersicht &uuml;ber Renditen, Dividenden, Steuern. Und dank Euch allen, eurem Feedback und Euren Ideen, machte es super viel Spa&szlig;, die Seite kontinuierlich zu verbessern.</p>
+<p style="text-align: justify;">Ich selbst komme aus Aalen, auf der schw&auml;bischen Alb. Mein Studium der Informatik hat mich von Stuttgart &uuml;ber Berlin bis nach Brasilien (Florianopolis) und China (Shanghai) gef&uuml;hrt. Wenn die vielen Jahre im Ausland mich eines gelehrt haben, dann das: Es gibt viele M&ouml;glichkeiten Dinge zu tun, und die Eigene ist nicht unbedingt die Beste :). Vor allem kommt es darauf an st&auml;ndig zu &Uuml;berpr&uuml;fen, ob das eigene Vorgehen im aktuellen Kontext noch das Richtige ist.</p>
+<p style="text-align: justify;">Das klingt trivial, ist es meiner Meinung aber nicht. Auf die Finanzwelt &uuml;bertragen ergibt sich hieraus die Frage, ob Gesch&auml;ftsmodelle &uuml;bertragbar sind. Ist die Auslandsexpansion eines deutschen Mittelst&auml;ndlers erfolgsversprechend? Ist das Management flexibel genug, das Gesch&auml;ftsmodell radikal auf den lokalen Markt anzupassen. Oder ist die F&uuml;hrung doch eher in Ihrer traditionellen Sichtweise auf den Kunden gefangen?</p>
+<p style="text-align: justify;">F&uuml;r die Aktienfreunde bedeutet dies, dass wir eure Vorschl&auml;ge gerne aufnehmen. Wir sind bereit Bestehendes zu &Auml;ndern, um euch eine bessere Erfahrung zu bieten. Wir werden genau auf eure Vorschl&auml;ge h&ouml;ren und uns in die Richtung bewegen, die euch den gr&ouml;&szlig;ten Nutzen bietet.</p>
+<p style="text-align: justify;">In diesem Sinne lade ich euch Alle herzlich ein, die Zukunft von Aktienfreunde mit zu gestalten.</p>
+
+
+                                </div><!-- /contentprimary -->
+
+                        </div><!-- /content -->
+
+                </div><!-- /page -->
+
+                                <div id="datenschutzPage" data-role="page" data-theme="a"><!-- id to tie the page event to this specific page -->
+
+                        <!-- left panel  -->
+                        <div id="panelMenuDatenschutz" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuDatenschutzUL" data-role="listview"></ul>
+                        </div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+                        <!-- /panel -->
+
+                        <!-- right panel  -->
+                        <div id="panelMenuRightDatenschutz" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuRightDatenschutzUL" data-role="listview"></ul>
+                        </div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+                        <!-- /panel -->
+
+                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+                                <div>
+                                        <p class="headerBarText"><img id="headerTitleDatenschutz" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerShareDatenschutz" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowDatenschutz" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        &nbsp;</p>
+                                </div><!-- populate the panel menu, also with the id Index in this case -->
+                        </div><!-- /header -->
+
+                        <div role="main" class="ui-content" data-theme="a">
+
+                                <div class="content-secondary">
+
+                                        <h1>Datenschutz</h1>
+                                        <p>aktienfreunde.net ist eine nicht-kommerzielle Seite und behandelt Ihre Daten absolut vertraulich.
+Es findet keinerlei Weitergabe von Daten an Dritte statt.
+
+Benutzer von aktienfreunde.net haben die M&ouml;glichkeit, Daten ihrer Investments oder Watchlists mit anderen Benutzern dieser Seite zu teilen. Hierbei kann jeder Nutzer selbst entscheiden, welche Daten er wem zur Verf&uuml;gung stellen wird. Diese Berechtigung kann vom Benutzer jederzeit &uuml;ber die Profilseite wieder entzogen werden.
+aktienfreunde.net wird Nutzerentscheidungen stets respektieren und zu keinem Zeitpunkt Investmentdaten ohne ausdr&uuml;ckliche Zustimmung des Benutzers ver&ouml;ffentlichen. </p>
+
+
+                                </div><!-- /contentsecundary -->
+
+                                <div class="content-primary">
+
+                                        <h1>Erhebung und Nutzung von Daten</h1>
+                                        <p>
+
+Wenn Sie die Webseiten von aktienfreunde.net besuchen, werden tempor&auml;r Daten wie Ihre IP-Adresse oder das Datum des Zugriffs gespeichert.
+
+Dar&uuml;ber hinausgehende personenbezogene Daten wie Ihr Name, Ihre Anschrift oder Ihre E-Mail-Adresse werden nur erfasst, sofern Sie diese freiwillig angeben wie zum Beispiel im Rahmen der Registrierung.
+
+Ihre Daten werden von uns grunds&auml;tzlich nur und nur insoweit genutzt, wie es zur Durchf&uuml;hrung unseres Internetangebotes und des Nutzungsverh&auml;ltnisses erforderlich ist oder sonst gesetzlich erlaubt ist.
+
+aktienfreunde.net wird Ihre personenbezogenen Daten f&uuml;r Marketing-Ma&szlig;nahmen wie z.B. zur Versendung von E-Mails mit allgemeinen Informationen oder werbendem Charakter (z.B. Newsletter) nur dann verarbeiten und nutzen, wenn Sie dazu vorher ausdr&uuml;cklich separat Ihr Einverst&auml;ndnis erkl&auml;rt haben. Sie haben die M&ouml;glichkeit, solche Informationen jederzeit abzubestellen. F&uuml;r die Abbestellung gen&uuml;gt eine einfache Email-Benachrichtigung an aktienfreunde.net. Alle M&ouml;glichkeiten mit uns in Kontakt zu treten, finden Sie durch Anklicken des Links Impressum.
+
+Dar&uuml;ber hinaus wird aktienfreunde.net nur dann Daten erheben, verarbeiten oder nutzen, soweit dies bei Vorliegen tats&auml;chlicher Anhaltspunkte im Einzelfall erforderlich ist, um betr&uuml;gerisches oder sonstiges rechtswidriges oder vertragswidriges Verhalten auf den Webseiten von aktienfreunde.net aufzudecken. Zu diesem Zweck darf aktienfreunde.net auch Nutzungsdaten, unter anderem mit Hilfe von Cookies, erheben und in der Weise verarbeiten und nutzen, dass aus dem Gesamtbestand aller aktuellen Angebote diejenigen ermittelt werden k&ouml;nnen, bei denen tats&auml;chliche Anhaltspunkte bestehen, dass sie in Missbrauchsabsicht eingestellt wurden.
+</p>
+
+                                        <h1>Weitergabe von Daten</h1>
+                                        <p>
+
+
+aktienfreunde.net &uuml;bermittelt Ihren Namen und Ihre Kontaktdaten wie Ihre E-Mail-Adresse an andere bei aktienfreunde.net registrierte Benutzer nur wenn Sie dies im Rahmen einer Einladung selbst veranlasst haben.
+
+Als registrierter Nutzer ist Ihr Benutzerprofil grunds&auml;tzlich allen Besuchern auf allen aktienfreunde.net Webseiten zug&auml;nglich.
+
+aktienfreunde.net verwendet MailChimp zum Versandt des Newsletters. Wenn Sie unseren Newsletter abonniert haben, wird Ihre E-Mail Adresse im Rahmen dieses Newsletters im gesch&uuml;tzten MailChimp Account von aktienfreunde.net gespeichert.
+
+Ihre personenbezogenen Daten wird aktienfreunde.net dar&uuml;ber hinaus nur im Rahmen der gesetzlichen Vorschriften an Dritte &uuml;bermitteln, inbesondere an Strafverfolgungs- und Aufsichtsbeh&ouml;rden zur Abwehr von Gefahren f&uuml;r die staatliche und &ouml;ffentliche Sicherheit sowie zur Verfolgung von Straftaten oder wenn dies zur Wahrung berechtigter Interessen eines Dritten erforderlich ist.
+</p>
+
+                                        <h1>Cookies</h1>
+                                        <p>
+   aktienfreunde.net speichert unter Umst&auml;nden Informationen in Form sog. Cookies auf Ihrem System. Cookies sind Identifizierungszeichen, die auf Ihrer Festplatte gespeichert werden. Sie enthalten Informationen &uuml;ber den Nutzer. Die Nutzung eines Cookies steht in keinerlei Verbindung mit Ihren auf den Webseiten angegebenen pers&ouml;nlichen Informationen. Die Nutzung unserer Webseiten ist auch dann m&ouml;glich, wenn Sie &uuml;ber Ihren Browser den Empfang von Cookies deaktiviert haben. Dies kann jedoch zur Folge haben, dass einige Seiten nicht mehr oder nur eingeschr&auml;nkt funktionieren. </p>
+
+                                        <h1>L&ouml;schung und &Auml;nderung ihrer Daten</h1>
+                                        <p>
+
+
+Sie k&ouml;nnen jederzeit Auskunft &uuml;ber Ihre bei uns gespeicherten Daten sowie eine Berichtigung, Sperrung und L&ouml;schung beantragen. Alle M&ouml;glicheiten mit aktienfreunde.net Kontakt aufzunehmen finden Sie durch Anklicken des Links Impressum. </p>
+
+                                        <h1>&Auml;nderung dieser Datenschutzerkl&auml;rung</h1>
+                                        <p>
+
+
+aktienfreunde.net wird Sie an geeigneter Stelle darauf hinweisen, wenn diese Datenschutzerkl&auml;rung ge&auml;ndert wird. </p>
+      <h1>Sicherheit und G&uuml;ltigkeit</h1>
+                                        <p>
+
+
+aktienfreunde.net sch&uuml;tzt Ihre Daten vor dem unberechtigten Zugriff Dritter im Rahmen der jeweiligen technischen M&ouml;glichkeiten. Die G&uuml;ltigkeit dieser Datenschutzerkl&auml;rung ist begrenzt auf unsere Webseiten. Auf Links zu anderen Unternehmen erstreckt sich diese Datenschutzerkl&auml;rung nicht.  </p>
+
+      <h1>Einwilligung und Widerruf</h1>
+                                        <p>
+
+
+Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerkl&auml;rung ein. Ihre Einwilligungserkl&auml;rung k&ouml;nnen Sie jederzeit mit Wirkung f&uuml;r die Zukunft widerrufen.  </p>
+
+                                </div><!-- /contentprimary -->
+
+                        </div><!-- /content -->
+
+                </div><!-- /page -->
+
+
+                <div id="servicePage" data-role="page" data-theme="a">
+
+                        <!-- left panel  -->
+                        <div id="panelMenuService" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuServiceUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <!-- right panel  -->
+                        <div id="panelMenuRightService" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuRightServiceUL" data-role="listview"></ul>
+                        </div>
+                        <!-- /panel -->
+
+                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+                                <div>
+                                        <p class="headerBarText"><img id="headerTitleService" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerShareService" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowService" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        &nbsp;</p>
+                                </div>
+                        </div><!-- /header -->
+
+                        <div role="main" class="ui-content" data-theme="a">
+
+                                <table>
+
+                                <tr class="tdTitle">
+                                        <td colspan=2>Service settings</td>
+                                </tr>
+
+                                <tr class="lineBreak">
+                                        <td class="center" colspan=2><p class="thinSettings">Android Service. A service that can execute native Java code in the background in a PhoneGap app on the Android platform.</p></td>
+                                </tr>
+
+                                <tr class="lineBreak">
+                                        <td class="left"><p class="bigSettings">Service enabled</p><p class="tinySettings">Enable or disable the service.</p></td>
+                                        <td class="right">
+                                                <select name="flipServiceStatus" id="serviceStatus" data-role="flipswitch" data-corners="false" data-mini="true" data-theme="c">
+                                                        <option value="on">on</option>
+                                                        <option value="off">off</option>
+                                                </select>
+                                        </td>
+                                </tr>
+
+                                <tr class="lineBreak">
+                                        <td class="left"><p class="bigSettings">Set toast duration</p><p class="tinySettings">Show a toast for a shorter or longer period.</p></td>
+                                        <td class="right">
+                                                <select name="flipServiceToastDuration" id="serviceToastDuration" data-role="flipswitch" data-corners="false" data-mini="true" data-theme="c">
+                                                        <option value="short">short</option>
+                                                        <option value="long">long</option>
+                                                </select>
+                                        </td>
+                                </tr>
+
+                                <tr class="lineBreak">
+                                        <td class="left"><p class="bigSettings">Interval timer enabled</p><p class="tinySettings">Execute the service on a given time interval.</p></td>
+                                        <td class="right">
+                                                <select name="flipServiceTimer" id="serviceTimer" data-role="flipswitch" data-corners="false" data-mini="true" data-theme="c">
+                                                        <option value="on">on</option>
+                                                        <option value="off">off</option>
+                                                </select>
+                                        </td>
+                                </tr>
+
+                                <tr class="nonLineBreak">
+                                        <td colspan=2><p class="bigSettings">Set interval to once every...</p><div id="timerDurationStatus" class="darkcyan"></div></td>
+                                </tr>
+
+                                <tr class="lineBreak">
+                                        <td colspan=2>
+                                                <div data-role="controlgroup">
+                                                        <input type="button" data-theme="c" data-shadow="false" id="toggleTimer1" data-mini="true" value="1 min" />
+                                                        <input type="button" data-theme="c" data-shadow="false" id="toggleTimer2" data-mini="true" value="30 min" />
+                                                        <input type="button" data-theme="c" data-shadow="false" id="toggleTimer3" data-mini="true" value="1 hour" />
+                                                        <input type="button" data-theme="c" data-shadow="false" id="toggleTimer4" data-mini="true" value="6 hours" />
+                                                        <input type="button" data-theme="c" data-shadow="false" id="toggleTimer5" data-mini="true" value="12 hours" />
+                                                        <input type="button" data-theme="c" data-shadow="false" id="toggleTimer6" data-mini="true" value="1 day" />
+                                                </div>
+                                        </td>
+                                </tr>
+
+                                <tr class="nonLineBreak">
+                                        <td colspan=2><p class="bigSettings">Run once</p><p class="tinySettings">Execute the service now and only once.</p></td>
+
+                                </tr>
+
+                                <tr class="lineBreak">
+                                        <td colspan=2>
+                                                <div data-role="controlgroup" class="settingButtons">
+                                                        <button id="serviceRunOnce" data-mini="true">NOW</button>
+                                                </div>
+                                        </td>
+                                </tr>
+
+                                <tr class="lineBreak">
+                                        <td class="left"><p class="bigSettings">Start service at boot</p><p class="tinySettings">Restart the service when the device is restarted.</p></td>
+                                        <td class="right">
+                                                <select name="flipServiceBootStatus" id="serviceBootStatus" data-role="flipswitch" data-corners="false" data-mini="true" data-theme="c">
+                                                        <option value="on">on</option>
+                                                        <option value="off">off</option>
+                                                </select>
+                                        </td>
+                                </tr>
+
+                                </table>
+
+                        </div><!-- /content -->
+
+                </div><!-- /page -->
+
+        </body>
+
+</html>
