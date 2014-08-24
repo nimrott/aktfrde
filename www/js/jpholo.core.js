@@ -224,6 +224,8 @@ function toast(text, duration) {
 // device ready
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
+        // Hide Splashscreen if shorter than the time configured in config.xml
+        navigator.splashscreen.hide();
         // let the function "isDeviceReady" know that the event "deviceready" has been fired
         window.deviceReady = true;
         // prelude app images for faster GUI
