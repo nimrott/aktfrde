@@ -46,8 +46,22 @@
                 <!-- your scripts -->
 
                 <title>jpHolo</title>
+    <style type="text/css">
+        html, body { margin: 0; padding: 0; height: 100%; }
+        iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: none; padding-top: 50px;
+            box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;
+        }
+    </style>
+    <style type="text/css">
+body {
+    overflow:hidden;
+}
+</style>
         </head>
-        <body height="100%">
+        <body height:100%>
                 <div id="indexPage" data-role="page" data-theme="a"><!-- id to tie the page event to this specific page -->
 
                         <!-- left panel  -->
@@ -120,13 +134,10 @@
                                 </div>
                         </div><!-- /header -->
 
-                        <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
+                        <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px; " >
 
-                                   <div id="siteloader1" style="height:99%;"></div>
-                               <script>
-        $("#siteloader1")
-            .html('<object data="http://aktienfreunde.net/investment/list" id="site1" style="width: 100%;height:100%;"/></object>');
-</script>
+    <iframe src="http://aktienfreunde.net/"></iframe>
+
                         </div><!-- /content -->
 
                 </div><!-- /page -->
@@ -154,12 +165,7 @@
 
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
 
-                                   <div id="siteloader2" style="height:99%;"></div>
-                               <script>
-        $("#siteloader2")
-            .html('<object data="http://aktienfreunde.net/statistic/index" id="site2" style="width: 100%;height:100%;"/></object>');
-</script>
-
+                              <iframe src="http://aktienfreunde.net/statistic/index"></iframe>
                         </div><!-- /content -->
 
                 </div><!-- /page -->
@@ -187,12 +193,7 @@
 
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
 
-                                   <div id="siteloader3" style="height:99%;"></div>
-                               <script>
-        $("#siteloader3")
-            .html('<object data="http://aktienfreunde.net/watchlist/show" id="site3" style="width: 100%;height:100%;"/></object>');
-</script>
-
+                             <iframe src="http://aktienfreunde.net/watchlist/show"></iframe>
                         </div><!-- /content -->
 
                 </div><!-- /page -->
@@ -221,12 +222,7 @@
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
 
 
-                                   <div id="siteloader4" style="height:99%;"></div>
-                               <script>
-        $("#siteloader4")
-            .html('<object data="http://blog.aktienfreunde.net/" id="site4" style="width: 100%;height:100%;"/></object>');
-</script>
-
+                            <iframe src="http://blog.aktienfreunde.net/"></iframe>
                         </div><!-- /content -->
 
                 </div><!-- /page -->
@@ -254,13 +250,8 @@
 
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
 
-                                   <div id="siteloader5" style="height:99%;"></div>
 
-                               <script>
-        $("#siteloader5")
-            .html('<object data="http://aktienfreunde.net/login/auth" id="site5" style="width: 100%;height:100%;"/></object>');
-</script>
-
+                         <iframe src="http://aktienfreunde.net/login/auth"></iframe>
                         </div><!-- /content -->
 
                 </div><!-- /page -->
@@ -289,12 +280,7 @@
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
 
 
-                                   <div id="siteloader6" style="height:99%;"></div>
-                               <script>
-        $("#siteloader6")
-            .html('<object data="http://aktienfreunde.net/investment/showCashType" id="site6" style="width: 100%;height:100%;"/></object>');
-</script>
-
+                        <iframe src="http://aktienfreunde.net/investment/showCashType"></iframe>
                         </div><!-- /content -->
 
                 </div><!-- /page -->
@@ -322,13 +308,7 @@
 
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
 
-
-                                   <div id="siteloader7" style="height:99%;"></div>
-                               <script>
-        $("#siteloader7")
-            .html('<object data="http://aktienfreunde.net/profile/show" id="site7" style="width: 100%;height:100%;"/></object>');
-</script>
-
+                        <iframe src="http://aktienfreunde.net/profile/show"></iframe>
                         </div><!-- /content -->
 
                 </div><!-- /page -->
@@ -356,13 +336,7 @@
 
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
 
-
-                                   <div id="siteloader8" style="height:99%;"></div>
-                               <script>
-        $("#siteloader8")
-            .html('<object data="http://aktienfreunde.net/interest/index" id="site8" style="width: 100%;height:100%;"/></object>');
-</script>
-
+                        <iframe src="http://aktienfreunde.net/interest/index"></iframe>
                         </div><!-- /content -->
 
                 </div><!-- /page -->
