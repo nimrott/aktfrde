@@ -392,7 +392,7 @@ function panelMenu(divId) {
         panel.append('<li data-icon="false"><a class="panelText" href="#blogPage"><img src="./images/icons/ic_action_home.png" class="ui-li-icon largerIcon">Finanzblog</a></li>');
         panel.append('<li data-role="list-divider"><p class="panelTextDivider">Finanzverwaltung</p></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="#investPage"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Investments</a></li>');
-        panel.append('<li data-icon="false"><a class="panelText" href="#statsPage"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Statistiken</a></li>');
+        panel.append('<li data-icon="false"><a class="panelText" href="http://aktienfreunde.net/statistic/index" target="invest"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Statistiken</a></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="#listsPage"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Watchlists</a></li>');
         panel.append('<li data-role="list-divider"><p class="panelTextDivider">Anmeldung</p></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="#otherPage"><img src="./images/icons/ic_action_home.png" class="ui-li-icon largerIcon">Login &frasl; Logout</a></li>');

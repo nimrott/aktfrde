@@ -136,7 +136,19 @@ body {
                                 <div class="content-primary">
 
                                         <h1>Deine kostenlose Depot- und Portfolio&uuml;bersicht.</h1>
-                                        <p>Aktien kaufen wird immer einfacher - wieso nicht auch die Verm&ouml;gensverwaltung?</p>
+                                        <p>Aktien kaufen wird immer einfacher - wieso nicht auch die Verm&ouml;gensverwaltung?
+                                        <br>
+                                         <form action="http://aktienfreunde.net/investment/lookupTickerSymbol" method="post" role="search" class="searchform" target="invest">
+                                                        <input class="sf-s" name="symbol" id="lookupTickerSymbol" value="Daimler"
+                                                                                placeholder="Name / ISIN" />
+                                                <input class="sf-searchsubmit" type="submit" value="Hier suchen" />
+                                            </form>
+                                            <a href="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=Daimler" target="invest">Link Text</a>
+                                            <br>
+
+                                            <br>
+                                            <input type="button" value="iFrame Reload" onclick="window.frames['invest'].location.reload()" />
+                                        </p>
                                         <p><img src="./images/aktenfreunde_screenshots.jpg" alt="" border="0" width="100%" height=""></p>
                                         <p>Diese App befindet sich noch im Aufbau. Zurzeit ist die Nutzung leider nur bei einer bestehenden Internetverbindung m&ouml;glich. Wir bitten um Verst&auml;ndnis.</p>
 
@@ -169,7 +181,7 @@ body {
 
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px; " >
 
-    <iframe src="http://aktienfreunde.net/investment/list"></iframe>
+    <iframe name="invest" src="http://aktienfreunde.net/investment/list"></iframe>
 
                         </div><!-- /content -->
 
