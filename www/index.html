@@ -60,6 +60,39 @@ body {
     overflow:hidden;
 }
 </style>
+
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        // Empty
+    }
+
+    // alert dialog dismissed
+        function alertDismissed() {
+            // do something
+        }
+
+    // Show a custom alertDismissed
+    //
+    function showAlert() {
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+    }
+
+    </script>
+
+
+
         </head>
         <body height:100%>
                 <div id="indexPage" data-role="page" data-theme="a"><!-- id to tie the page event to this specific page -->
@@ -91,7 +124,7 @@ body {
                                         <ul>
                                         <li>Einfache Analysen</li>
                                         <li>Tolle Statistiken</li>
-                                        <li>Watchlisten teilen</li>
+                                        <li><a href="#" onclick="showAlert(); return false;">Show Alert</a></li>
                                         <li>Mit Freunden diskutieren</li>
                                         </ul>
 
