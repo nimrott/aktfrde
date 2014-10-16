@@ -295,7 +295,7 @@ function isDeviceReady(value, action) {
                 var connection = checkConnection();
                 switch (action) {
                 case "toastReady":
-                        toast("Holo Light with Dark action bar example\nDevice is ready according to PhoneGap.\nConnection type: " + connection + "\n\nThis is your value: " + value, "short");
+                      //  toast("Holo Light with Dark action bar example\nDevice is ready according to PhoneGap.\nConnection type: " + connection + "\n\nThis is your value: " + value, "short");
                         break;
                 case "action2":
                         // code
@@ -344,7 +344,7 @@ function onMenuKeyDown() {
 
 // search button
 function onSearchKeyDown() {
-    toast('You want to search?', 'short');
+   // toast('You want to search?', 'short');
 }
 
 // pause app
@@ -753,9 +753,7 @@ function initPageVarsOnCreate(id) {
         //        // do nothing
         } else if (id === "Invest") {
         //        // do nothing
-        } else if (id === "Lists") {
-
-                 }
+        }
 }
 
 // initialize page variables on beforeshow
@@ -804,15 +802,6 @@ $(document).on('pagecreate', '#indexPage', function () {
         initPageVarsOnCreate('Index');
 });
 
-// #otherPage
-$(document).on('pagebeforeshow', '#otherPage', function (event, data) {
-        startBeforeShowVars(data);
-        initPageVarsOnShow('Other');
-});
-$(document).on('pagecreate', '#otherPage', function () {
-        initPageVarsOnCreate('Other');
-});
-
 // #servicePage
 $(document).on('pagebeforeshow', '#servicePage', function (event, data) {
         startBeforeShowVars(data);
@@ -831,42 +820,6 @@ $(document).on('pagecreate', '#investPage', function () {
         initPageVarsOnCreate('Invest');
 });
 
-// #statsPage
-$(document).on('pagebeforeshow', '#statsPage', function (event, data) {
-        startBeforeShowVars(data);
-        initPageVarsOnShow('Stats');
-});
-$(document).on('pagecreate', '#statsPage', function () {
-        initPageVarsOnCreate('Stats');
-});
-
-// #listsPage
-$(document).on('pagebeforeshow', '#listsPage', function (event, data) {
-        startBeforeShowVars(data);
-        initPageVarsOnShow('Lists');
-});
-$(document).on('pagecreate', '#listsPage', function () {
-        initPageVarsOnCreate('Lists');
-});
-
-// #blogPage
-$(document).on('pagebeforeshow', '#blogPage', function (event, data) {
-        startBeforeShowVars(data);
-        initPageVarsOnShow('Blog');
-});
-$(document).on('pagecreate', '#blogPage', function () {
-        initPageVarsOnCreate('Blog');
-});
-
-// #kontoPage
-$(document).on('pagebeforeshow', '#kontoPage', function (event, data) {
-        startBeforeShowVars(data);
-        initPageVarsOnShow('Konto');
-});
-$(document).on('pagecreate', '#kontoPage', function () {
-        initPageVarsOnCreate('Konto');
-});
-
 // #impressumPage
 $(document).on('pagebeforeshow', '#impressumPage', function (event, data) {
         startBeforeShowVars(data);
@@ -883,22 +836,4 @@ $(document).on('pagebeforeshow', '#datenschutzPage', function (event, data) {
 });
 $(document).on('pagecreate', '#datenschutzPage', function () {
         initPageVarsOnCreate('Datenschutz');
-});
-
-// #rechnerPage
-$(document).on('pagebeforeshow', '#rechnerPage', function (event, data) {
-        startBeforeShowVars(data);
-        initPageVarsOnShow('Rechner');
-});
-$(document).on('pagecreate', '#rechnerPage', function () {
-        initPageVarsOnCreate('Rechner');
-});
-
-// #profilPage
-$(document).on('pagebeforeshow', '#profilPage', function (event, data) {
-        startBeforeShowVars(data);
-        initPageVarsOnShow('Profil');
-});
-$(document).on('pagecreate', '#profilPage', function () {
-        initPageVarsOnCreate('Profil');
 });
