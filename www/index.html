@@ -106,6 +106,9 @@ input.suche[type='text']:hover, input.suche[type='text']:focus {
                         <!-- /panel -->
 
                         <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+
+                                <input type="text" id="suchKiste5" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch5(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
+
                                 <div>
                                         <p class="headerBarText"><img id="headerTitleIndex" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchIndex" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareIndex" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowIndex" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
                                         &nbsp;</p>
@@ -143,6 +146,9 @@ input.suche[type='text']:hover, input.suche[type='text']:focus {
                         <!-- /panel -->
 
                         <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+
+                        <input type="text" id="suchKiste4" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch4(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
+
                                 <div>
                                         <p class="headerBarText"><img id="headerTitleInvest" class="headerIconTitle" src="./images/icons/ic_launcher_full_arrow.png" /><img id="headerSearchInvest" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareInvest" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowInvest" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
                                         &nbsp;</p>
@@ -179,6 +185,9 @@ input.suche[type='text']:hover, input.suche[type='text']:focus {
                         <!-- /panel -->
 
                         <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+
+                        <input type="text" id="suchKiste3" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch3(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
+
                                 <div>
                                         <p class="headerBarText"><img id="headerTitleImpressum" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchImpressum" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareImpressum" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowImpressum" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
                                         &nbsp;</p>
@@ -219,6 +228,9 @@ NL-7102ZZ Winterswijk</p>
                         <!-- /panel -->
 
                         <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+
+                                <input type="text" id="suchKiste2" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch2(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
+
                                 <div>
                                         <p class="headerBarText"><img id="headerTitleDatenschutz" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchDatenschutz" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareDatenschutz" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowDatenschutz" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
                                         &nbsp;</p>
@@ -318,7 +330,7 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
 
                         <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
 
-                                <input type="text" id="suchKiste" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
+                                <input type="text" id="suchKiste1" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch1(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
 
                                 <div>
                                         <p class="headerBarText"><img id="headerTitleService" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchService" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareService" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowService" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
@@ -368,13 +380,94 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                   window.location.href = "#investPage";
                   document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/logout/index";
                   }
-         function FrameSearch(e){
+         function FrameSearch1(e){
+                  if (e.keyCode == 13) {      //faengt Entertaste ab
+                         var suchwert1 = document.getElementById("suchKiste1").value;    //Uebergibt Suchfeldeingabe in Variable suchwert
+                         SetLoader();         //setzte wieder Ladebild vor iframe um so den alten Inhalt zu verstecken bis Laden fertig
+                         window.location.href = "#investPage";        //wechselt zur Invest Seite wo IFrame liegt
+                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=" + suchwert1; //aendere URL im Iframe mit Adresse der Suchmaske von Wolfram
+                         document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
+                         document.getElementById("suchKiste2").style.visibility="hidden";
+                         document.getElementById("suchKiste3").style.visibility="hidden";
+                         document.getElementById("suchKiste4").style.visibility="hidden";
+                         document.getElementById("suchKiste5").style.visibility="hidden";
+                         document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchInvest").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_header.png";
+                         return false;
+                  }}
+         function FrameSearch2(e){
                   if (e.keyCode == 13) {
-                         var suchwert = document.getElementById("suchKiste").value;
+                         var suchwert2 = document.getElementById("suchKiste2").value;
                          SetLoader();
                          window.location.href = "#investPage";
-                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=" + suchwert;
-                         document.getElementById("suchKiste").style.visibility="hidden";
+                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=" + suchwert2;
+                         document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
+                         document.getElementById("suchKiste2").style.visibility="hidden";
+                         document.getElementById("suchKiste3").style.visibility="hidden";
+                         document.getElementById("suchKiste4").style.visibility="hidden";
+                         document.getElementById("suchKiste5").style.visibility="hidden";
+                         document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchInvest").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_header.png";
+                         return false;
+                  }}
+         function FrameSearch3(e){
+                  if (e.keyCode == 13) {
+                         var suchwert3 = document.getElementById("suchKiste3").value;
+                         SetLoader();
+                         window.location.href = "#investPage";
+                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=" + suchwert3;
+                         document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
+                         document.getElementById("suchKiste2").style.visibility="hidden";
+                         document.getElementById("suchKiste3").style.visibility="hidden";
+                         document.getElementById("suchKiste4").style.visibility="hidden";
+                         document.getElementById("suchKiste5").style.visibility="hidden";
+                         document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchInvest").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_header.png";
+                         return false;
+                  }}
+         function FrameSearch4(e){
+                  if (e.keyCode == 13) {
+                         var suchwert4 = document.getElementById("suchKiste4").value;
+                         SetLoader();
+                         window.location.href = "#investPage";
+                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=" + suchwert4;
+                         document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
+                         document.getElementById("suchKiste2").style.visibility="hidden";
+                         document.getElementById("suchKiste3").style.visibility="hidden";
+                         document.getElementById("suchKiste4").style.visibility="hidden";
+                         document.getElementById("suchKiste5").style.visibility="hidden";
+                         document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchInvest").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_header.png";
+                         return false;
+                  }}
+         function FrameSearch5(e){
+                  if (e.keyCode == 13) {
+                         var suchwert5 = document.getElementById("suchKiste5").value;
+                         SetLoader();
+                         window.location.href = "#investPage";
+                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=" + suchwert5;
+                         document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
+                         document.getElementById("suchKiste2").style.visibility="hidden";
+                         document.getElementById("suchKiste3").style.visibility="hidden";
+                         document.getElementById("suchKiste4").style.visibility="hidden";
+                         document.getElementById("suchKiste5").style.visibility="hidden";
+                         document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchInvest").src="./images/icons/ic_action_search_header.png";
+                         document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_header.png";
                          return false;
                   }}
 </script>
