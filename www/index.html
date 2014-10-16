@@ -98,16 +98,9 @@
                                          <h1>Deine kostenlose Depot- und Portfolio&uuml;bersicht.</h1>
                                         <p>Aktien kaufen wird immer einfacher - wieso nicht auch die Verm&ouml;gensverwaltung?
                                         <br>
-                                         <form action="http://aktienfreunde.net/investment/lookupTickerSymbol" method="post" role="search" class="searchform" target="invest">
-                                                        <input class="sf-s" name="symbol" id="lookupTickerSymbol" value="Daimler"
-                                                                                placeholder="Name / ISIN" />
-                                                <input class="sf-searchsubmit" type="submit" value="Hier suchen" />
-                                            </form>
-                                            <a href="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=Daimler" target="invest">Link Text</a>
+                                            <a href="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=Daimler" target="mainframe" onclick="window.location.href = '#investPage';">Link Text</a>
                                             <br>
 
-                                            <br>
-                                            <input type="button" value="iFrame Reload" onclick="window.frames['mainframe'].location.reload()" />
                                         </p>
                                         <p><img src="./images/aktenfreunde_screenshots.jpg" alt="" border="0" width="100%" height=""></p>
                                         <p>Diese App befindet sich noch im Aufbau. Zurzeit ist die Nutzung leider nur bei einer bestehenden Internetverbindung m&ouml;glich. Wir bitten um Verst&auml;ndnis.</p>
@@ -312,89 +305,45 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                         </div><!-- /header -->
 
                         <div role="main" class="ui-content" data-theme="a">
+                              <form>
+                               <input type="button" id="login" width="200" value="Einloggen" onClick="changeFramelogin(); return false;"/>
+                               <input type="button" id="logoff" width="200"value="Ausloggen" onClick="changeFramelogoff(); return false;"/>
+                               <script>
 
-                                <table>
-
-                                <tr class="tdTitle">
-                                        <td colspan=2>Service settings</td>
-                                </tr>
-
-                                <tr class="lineBreak">
-                                        <td class="center" colspan=2><p class="thinSettings">Android Service. A service that can execute native Java code in the background in a PhoneGap app on the Android platform.</p></td>
-                                </tr>
-
-                                <tr class="lineBreak">
-                                        <td class="left"><p class="bigSettings">Service enabled</p><p class="tinySettings">Enable or disable the service.</p></td>
-                                        <td class="right">
-                                                <select name="flipServiceStatus" id="serviceStatus" data-role="flipswitch" data-corners="false" data-mini="true" data-theme="c">
-                                                        <option value="on">on</option>
-                                                        <option value="off">off</option>
-                                                </select>
-                                        </td>
-                                </tr>
-
-                                <tr class="lineBreak">
-                                        <td class="left"><p class="bigSettings">Set toast duration</p><p class="tinySettings">Show a toast for a shorter or longer period.</p></td>
-                                        <td class="right">
-                                                <select name="flipServiceToastDuration" id="serviceToastDuration" data-role="flipswitch" data-corners="false" data-mini="true" data-theme="c">
-                                                        <option value="short">short</option>
-                                                        <option value="long">long</option>
-                                                </select>
-                                        </td>
-                                </tr>
-
-                                <tr class="lineBreak">
-                                        <td class="left"><p class="bigSettings">Interval timer enabled</p><p class="tinySettings">Execute the service on a given time interval.</p></td>
-                                        <td class="right">
-                                                <select name="flipServiceTimer" id="serviceTimer" data-role="flipswitch" data-corners="false" data-mini="true" data-theme="c">
-                                                        <option value="on">on</option>
-                                                        <option value="off">off</option>
-                                                </select>
-                                        </td>
-                                </tr>
-
-                                <tr class="nonLineBreak">
-                                        <td colspan=2><p class="bigSettings">Set interval to once every...</p><div id="timerDurationStatus" class="darkcyan"></div></td>
-                                </tr>
-
-                                <tr class="lineBreak">
-                                        <td colspan=2>
-                                                <div data-role="controlgroup">
-                                                        <input type="button" data-theme="c" data-shadow="false" id="toggleTimer1" data-mini="true" value="1 min" />
-                                                        <input type="button" data-theme="c" data-shadow="false" id="toggleTimer2" data-mini="true" value="30 min" />
-                                                        <input type="button" data-theme="c" data-shadow="false" id="toggleTimer3" data-mini="true" value="1 hour" />
-                                                        <input type="button" data-theme="c" data-shadow="false" id="toggleTimer4" data-mini="true" value="6 hours" />
-                                                        <input type="button" data-theme="c" data-shadow="false" id="toggleTimer5" data-mini="true" value="12 hours" />
-                                                        <input type="button" data-theme="c" data-shadow="false" id="toggleTimer6" data-mini="true" value="1 day" />
-                                                </div>
-                                        </td>
-                                </tr>
-
-                                <tr class="nonLineBreak">
-                                        <td colspan=2><p class="bigSettings">Run once</p><p class="tinySettings">Execute the service now and only once.</p></td>
-
-                                </tr>
-
-                                <tr class="lineBreak">
-                                        <td colspan=2>
-                                                <div data-role="controlgroup" class="settingButtons">
-                                                        <button id="serviceRunOnce" data-mini="true">NOW</button>
-                                                </div>
-                                        </td>
-                                </tr>
-
-                                <tr class="lineBreak">
-                                        <td class="left"><p class="bigSettings">Start service at boot</p><p class="tinySettings">Restart the service when the device is restarted.</p></td>
-                                        <td class="right">
-                                                <select name="flipServiceBootStatus" id="serviceBootStatus" data-role="flipswitch" data-corners="false" data-mini="true" data-theme="c">
-                                                        <option value="on">on</option>
-                                                        <option value="off">off</option>
-                                                </select>
-                                        </td>
-                                </tr>
-
-                                </table>
-
+                               function changeFramelogin(){
+         SetLoader();
+         window.location.href = "#investPage";
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/login/auth";
+         }
+function changeFramelogoff(){
+         SetLoader();
+         window.location.href = "#investPage";
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/logout/index";;
+         }                     </script>
+                              </form>
+                                <br><br>
+                               Um zuk&uuml;nftig automatisch beim App-Start eingeloggt zu werden, speichern Sie hier ihre Login-Daten.<br><br>
+                               <form>
+                               <input type="text" id="user" value="Benutzername" />
+                               <input type="password" id="userpwd" value="Password" />
+                               <input type="button" id="button1" value="Login speichern" onclick="SavePass();"/>
+                               <input type="button" id="button2" value="TEST Login anzeigen" onclick="GetPass();"/>
+                               <input type="button" id="button3" value="Alles l&ouml;schen" onclick="DeletePass();"/>
+                               <script>
+                               function SavePass(){
+                                        window.localStorage.setItem("key1", document.getElementById('user').value);
+                                        window.localStorage.setItem("key2", document.getElementById('userpwd').value);
+                                        }
+                               function GetPass() {
+                                         var value = window.localStorage.getItem("key1");
+                                         alert(value);
+                                        }
+                               function DeletePass() {
+                                         var value = window.localStorage.removeItem("key1");
+                                         var value = window.localStorage.removeItem("key2");
+                                        }
+                               </script>
+                               </form>
                         </div><!-- /content -->
 
                 </div><!-- /page -->

@@ -393,10 +393,10 @@ function panelMenu(divId) {
         panel.append('<li data-role="list-divider"><p class="panelTextDivider">Finanzverwaltung</p></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame2(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Investments</a></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame3(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Statistiken</a></li>');
-        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame4(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Watchlists</a></li>');
-        panel.append('<li data-role="list-divider"><p class="panelTextDivider">Anmeldung</p></li>');
-        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame5(); return false;"><img src="./images/icons/ic_action_home.png" class="ui-li-icon largerIcon">Login &frasl; Logout</a></li>');
-        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame6(); return false;"><img src="./images/icons/ic_action_home.png" class="ui-li-icon largerIcon">Mein Profil</a></li>');
+        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame4(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Watchlisten</a></li>');
+        panel.append('<li data-role="list-divider"><p class="panelTextDivider">Soziales</p></li>');
+        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame5(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Mein Profil</a></li>');
+        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame6(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Freunde</a></li>');
         panel.listview('refresh');
 }
 
@@ -411,6 +411,7 @@ function panelMenuRight(divId) {
         panel.append('<li data-role="list-divider"><p class="panelTextDivider">Zur App</p></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame9(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Impressum</a></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame10(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Datenschutz</a></li>');
+        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame11(); return false;"><img src="./images/icons/ic_action_home.png" class="ui-li-icon largerIcon">Login &frasl; Logout</a></li>');
         panel.listview('refresh');
 }
 
@@ -444,12 +445,12 @@ function changeFrame4(){
 function changeFrame5(){
          SetLoader();
          window.location.href = "#investPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/login/auth";
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/profile/show";
          }
 function changeFrame6(){
          SetLoader();
          window.location.href = "#investPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/profile/show";
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/friend/showFriends";
          }
 function changeFrame7(){
          SetLoader();
@@ -468,6 +469,10 @@ function changeFrame9(){
 function changeFrame10(){
          SetLoader();
          window.location.href = "#datenschutzPage";
+         }
+function changeFrame11(){
+         SetLoader();
+         window.location.href = "#servicePage";
          }
 
 // panel open and closed handling
