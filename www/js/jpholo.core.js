@@ -475,6 +475,7 @@ function changeFrame11(){
          window.location.href = "#servicePage";
          }
 
+
 // panel open and closed handling
 function panelHandling() {
         var currentId = window.localStorage.getItem("divIdGlobal");
@@ -695,7 +696,7 @@ function htmlClickEventHandlers(id, action) {
                 });
         $('#headerSearch' + id).off("click").on("click",
                 function () {
-
+                        alert('HIER DIE ACTION WENN SUCHE!');
                 });
         $('#headerSearch' + id).on("taphold",
                 function () {
