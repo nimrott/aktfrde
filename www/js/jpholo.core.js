@@ -349,12 +349,12 @@ function onSearchKeyDown() {
 
 // pause app
 function onPause() {
-        toast('App paused', 'short');
+       // toast('App paused', 'short');
 }
 
 // resume app
 function onResume() {
-        toast('App resumed', 'short');
+      //  toast('App resumed', 'short');
 }
 
 // get current date as string
