@@ -696,7 +696,14 @@ function htmlClickEventHandlers(id, action) {
                 });
         $('#headerSearch' + id).off("click").on("click",
                 function () {
-                        alert('HIER DIE ACTION WENN SUCHE!');
+                        if (document.getElementById("suchKiste").style.visibility == "hidden") {
+                                 document.getElementById("suchKiste").value="Name / ISIN suchen";
+                                 document.getElementById("suchKiste").style.visibility="visible";
+                                 document.getElementById("headerSearchService").src="./images/icons/ic_action_search_headerx.png";
+                           } else {
+                                 document.getElementById("suchKiste").style.visibility="hidden";
+                                 document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
+                           }
                 });
         $('#headerSearch' + id).on("taphold",
                 function () {

@@ -57,8 +57,6 @@
         body {
                  overflow:hidden;
                  }
-    </style>
-<style>
 #loader1 {
     position:absolute;
     left:45%;
@@ -68,8 +66,29 @@
     border:0px solid #777777;
     box-shadow:0px 0px 0px #777777;
 }
-</style>
+input.suche[type='text'] {
+    /* You can set width to whatever you like */
+    width: 150px;
+    right: 150px;
+    top:10px;
+    font-family: "Roboto", "Droid Sans", sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 8px 8px 6px 8px;
+    position: fixed;
+    display: block;
+    outline: none;
+    border: none;
+    color: #ffffff;
+    background: bottom left linear-gradient(#ffffff, #ffffff) no-repeat, bottom center linear-gradient(#ffffff, #ffffff) repeat-x, bottom right linear-gradient(#ffffff, #ffffff) no-repeat;
+    background-size: 1px 6px, 1px 1px, 1px 6px;
+}
+input.suche[type='text']:hover, input.suche[type='text']:focus {
+    background: bottom left linear-gradient(#ffffff, #ffffff) no-repeat, bottom center linear-gradient(#ffffff, #ffffff) repeat-x, bottom right linear-gradient(#ffffff, #ffffff) no-repeat;
+    background-size: 1px 6px, 1px 1px, 1px 6px;
 
+}
+</style>
         </head>
         <body height:100%>
                 <div id="indexPage" data-role="page" data-theme="a"><!-- id to tie the page event to this specific page -->
@@ -298,6 +317,9 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                         <!-- /panel -->
 
                         <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+
+                                <input type="text" id="suchKiste" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return changeFrameSearch(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
+
                                 <div>
                                         <p class="headerBarText"><img id="headerTitleService" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchService" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareService" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowService" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
                                         &nbsp;</p>
@@ -305,21 +327,31 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                         </div><!-- /header -->
 
                         <div role="main" class="ui-content" data-theme="a">
-                              <form>
+
+                               <form>
                                <input type="button" id="login" width="200" value="Einloggen" onClick="changeFramelogin(); return false;"/>
                                <input type="button" id="logoff" width="200"value="Ausloggen" onClick="changeFramelogoff(); return false;"/>
                                <script>
-
-                               function changeFramelogin(){
-         SetLoader();
-         window.location.href = "#investPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/login/auth";
-         }
-function changeFramelogoff(){
-         SetLoader();
-         window.location.href = "#investPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/logout/index";;
-         }                     </script>
+                                 function changeFramelogin(){
+                                         SetLoader();
+                                         window.location.href = "#investPage";
+                                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/login/auth";
+                                         }
+                                 function changeFramelogoff(){
+                                         SetLoader();
+                                         window.location.href = "#investPage";
+                                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/logout/index";
+                                         }
+                                 function changeFrameSearch(e){
+                                         if (e.keyCode == 13) {
+                                         var suchwert = document.getElementById("suchKiste").value;
+                                         SetLoader();
+                                         window.location.href = "#investPage";
+                                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=" + suchwert;
+                                         document.getElementById("suchKiste").style.visibility="hidden";
+                                         return false;
+                                         }}
+                              </script>
                               </form>
                                 <br><br>
                                Um zuk&uuml;nftig automatisch beim App-Start eingeloggt zu werden, speichern Sie hier ihre Login-Daten.<br><br>
