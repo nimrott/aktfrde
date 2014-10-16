@@ -117,7 +117,7 @@ input.suche[type='text']:hover, input.suche[type='text']:focus {
                                          <h1>Deine kostenlose Depot- und Portfolio&uuml;bersicht.</h1>
                                         <p>Aktien kaufen wird immer einfacher - wieso nicht auch die Verm&ouml;gensverwaltung?
                                         <br>
-                                            <a href="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=Daimler" target="mainframe" onclick="window.location.href = '#investPage';">Link Text</a>
+                                            <a href="" target="mainframe" onclick="alert(screen.width);">Screen Width herausfinden</a>
                                             <br>
 
                                         </p>
@@ -318,7 +318,7 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
 
                         <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
 
-                                <input type="text" id="suchKiste" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return changeFrameSearch(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
+                                <input type="text" id="suchKiste" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
 
                                 <div>
                                         <p class="headerBarText"><img id="headerTitleService" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchService" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareService" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowService" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
@@ -331,27 +331,6 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                                <form>
                                <input type="button" id="login" width="200" value="Einloggen" onClick="changeFramelogin(); return false;"/>
                                <input type="button" id="logoff" width="200"value="Ausloggen" onClick="changeFramelogoff(); return false;"/>
-                               <script>
-                                 function changeFramelogin(){
-                                         SetLoader();
-                                         window.location.href = "#investPage";
-                                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/login/auth";
-                                         }
-                                 function changeFramelogoff(){
-                                         SetLoader();
-                                         window.location.href = "#investPage";
-                                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/logout/index";
-                                         }
-                                 function changeFrameSearch(e){
-                                         if (e.keyCode == 13) {
-                                         var suchwert = document.getElementById("suchKiste").value;
-                                         SetLoader();
-                                         window.location.href = "#investPage";
-                                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=" + suchwert;
-                                         document.getElementById("suchKiste").style.visibility="hidden";
-                                         return false;
-                                         }}
-                              </script>
                               </form>
                                 <br><br>
                                Um zuk&uuml;nftig automatisch beim App-Start eingeloggt zu werden, speichern Sie hier ihre Login-Daten.<br><br>
@@ -361,25 +340,44 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                                <input type="button" id="button1" value="Login speichern" onclick="SavePass();"/>
                                <input type="button" id="button2" value="TEST Login anzeigen" onclick="GetPass();"/>
                                <input type="button" id="button3" value="Alles l&ouml;schen" onclick="DeletePass();"/>
-                               <script>
-                               function SavePass(){
-                                        window.localStorage.setItem("key1", document.getElementById('user').value);
-                                        window.localStorage.setItem("key2", document.getElementById('userpwd').value);
-                                        }
-                               function GetPass() {
-                                         var value = window.localStorage.getItem("key1");
-                                         alert(value);
-                                        }
-                               function DeletePass() {
-                                         var value = window.localStorage.removeItem("key1");
-                                         var value = window.localStorage.removeItem("key2");
-                                        }
-                               </script>
+
                                </form>
                         </div><!-- /content -->
 
                 </div><!-- /page -->
-
+<script>
+         function SavePass(){
+                 window.localStorage.setItem("key1", document.getElementById('user').value);
+                 window.localStorage.setItem("key2", document.getElementById('userpwd').value);
+                 }
+         function GetPass() {
+                 var value = window.localStorage.getItem("key1");
+                 alert(value);
+                 }
+         function DeletePass() {
+                  var value = window.localStorage.removeItem("key1");
+                  var value = window.localStorage.removeItem("key2");
+                  }
+         function changeFramelogin(){
+                  SetLoader();
+                  window.location.href = "#investPage";
+                  document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/login/auth";
+                  }
+         function changeFramelogoff(){
+                  SetLoader();
+                  window.location.href = "#investPage";
+                  document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/logout/index";
+                  }
+         function FrameSearch(e){
+                  if (e.keyCode == 13) {
+                         var suchwert = document.getElementById("suchKiste").value;
+                         SetLoader();
+                         window.location.href = "#investPage";
+                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=" + suchwert;
+                         document.getElementById("suchKiste").style.visibility="hidden";
+                         return false;
+                  }}
+</script>
         </body>
 
 </html>
