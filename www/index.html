@@ -54,44 +54,21 @@
             border: none; padding-top: 50px;
             box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;
         }
+        body {
+                 overflow:hidden;
+                 }
     </style>
-    <style type="text/css">
-body {
-    overflow:hidden;
+<style>
+#loader1 {
+    position:absolute;
+    left:45%;
+    top:45%;
+    border-radius:0px;
+    padding:0px;
+    border:0px solid #777777;
+    box-shadow:0px 0px 0px #777777;
 }
 </style>
-
-    <script type="text/javascript" charset="utf-8">
-
-    // Wait for device API libraries to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
-
-    // device APIs are available
-    //
-    function onDeviceReady() {
-        // Empty
-    }
-
-    // alert dialog dismissed
-        function alertDismissed() {
-            // do something
-        }
-
-    // Show a custom alertDismissed
-    //
-    function showAlert() {
-        navigator.notification.alert(
-            'You are the winner!',  // message
-            alertDismissed,         // callback
-            'Game Over',            // title
-            'Done'                  // buttonName
-        );
-    }
-
-    </script>
-
-
 
         </head>
         <body height:100%>
@@ -181,7 +158,14 @@ body {
 
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px; " >
 
-    <iframe name="invest" src="http://aktienfreunde.net/investment/list"></iframe>
+                         <img id="loader1" src="images/loading.gif" alt="loading" width="150" height="150"/>
+                         <iframe name="mainframe" src="http://aktienfreunde.net/logout/index" onLoad="hideLoader();"></iframe>
+
+                         <script>
+                                 function hideLoader() {
+                                                          document.getElementById('loader1').style.display = "none";
+                                                          }
+                         </script>
 
                         </div><!-- /content -->
 
@@ -210,7 +194,7 @@ body {
 
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
 
-                              <iframe src="http://aktienfreunde.net/statistic/index"></iframe>
+
                         </div><!-- /content -->
 
                 </div><!-- /page -->
@@ -238,7 +222,6 @@ body {
 
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
 
-                             <iframe src="http://aktienfreunde.net/watchlist/show"></iframe>
                         </div><!-- /content -->
 
                 </div><!-- /page -->
@@ -267,7 +250,7 @@ body {
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
 
 
-                            <iframe src="http://blog.aktienfreunde.net/"></iframe>
+
                         </div><!-- /content -->
 
                 </div><!-- /page -->
@@ -296,7 +279,7 @@ body {
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
 
 
-                         <iframe src="http://aktienfreunde.net/logout/index"></iframe>
+
                         </div><!-- /content -->
 
                 </div><!-- /page -->
@@ -325,7 +308,7 @@ body {
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
 
 
-                        <iframe src="http://aktienfreunde.net/investment/showCashType"></iframe>
+
                         </div><!-- /content -->
 
                 </div><!-- /page -->
@@ -353,7 +336,7 @@ body {
 
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
 
-                        <iframe src="http://aktienfreunde.net/profile/show"></iframe>
+
                         </div><!-- /content -->
 
                 </div><!-- /page -->
@@ -381,7 +364,7 @@ body {
 
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px;" >
 
-                        <iframe src="http://aktienfreunde.net/interest/index"></iframe>
+
                         </div><!-- /content -->
 
                 </div><!-- /page -->
