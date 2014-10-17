@@ -425,7 +425,7 @@ function changeFrame0(){
 function changeFrame1(){
          SetLoader();                                 //setzte Ladebild um Iframe zu verstecken bis fertiggeladen
          window.location.href = "#investPage";       // springe zur Investmentseite wo IFrame eingebettet ist
-         document.getElementsByName("mainframe")[0].src="http://blog.h2263032.stratoserver.net/?theme=Generic+jQuery+Mobile+Theme+1.2.0&passkey=27670300754414d3648518";  //laedt neue seite in iframe
+         document.getElementsByName("mainframe")[0].src="http://blog.aktienfreunde.net/artikel/?theme=Generic+jQuery+Mobile+Theme+1.2.0&passkey=93948456754418bf9a2e55";  //laedt neue seite in iframe
          }
 function changeFrame2(){
          SetLoader();
