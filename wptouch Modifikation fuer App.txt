@@ -1,0 +1,5 @@
+I had this same issue with WP Touch Pro. I went to http://www.bravenewcode.com/support and the person helping me was completely useless. His answers to my questions made it seem as if he didn't even read my support ticket.
+
+I figured out on my own why this is happening.
+
+In the JavaScript file: wp-content/plugins/wp-touch-pro/themes/foundation/modules/base/base.js , there is a javascript function that is forcing the theme out of any frame (iframes included). Comment out the code for the function "wptouchFdnEscFrames" (should be two lines, around 5 and 203). Now if your WPTouch Pro site is in an iframe, it won't redirect to the frame source URL. 
