@@ -164,7 +164,7 @@ function homeButton() {
         }
 }
 
-// Share
+// Share   DIESE FUNKTION IST VERALTET, durch ein neues PLUGIN WIRD DIESE NICHT MEHR GENUTZT...siehe SHARE PRESS ON CLICK
 function share(subject, text) {
         if (window.phonegapExcluded === false) {
                 var shares = cordova.require("cordova/plugin/share");
@@ -691,7 +691,8 @@ function htmlClickEventHandlers(id, action) {
                 });
         $('#headerShare' + id).off("click").on("click",
                 function () {
-                        share(window.localStorage.getItem('shareTagSubject'), window.localStorage.getItem('shareTagText'));
+                          window.plugins.socialsharing.share('Message and subject', 'The subject')
+//                        share(window.localStorage.getItem('shareTagSubject'), window.localStorage.getItem('shareTagText'));
                 });
         $('#headerShare' + id).on("taphold",
                 function () {
