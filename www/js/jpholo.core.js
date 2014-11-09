@@ -697,7 +697,7 @@ function htmlClickEventHandlers(id, action) {
         $('#headerSearch' + id).off("click").on("click",
                 function () {
                  if (document.getElementById("suchKiste1").style.visibility == "hidden") {
-                                 if (screen.width < "800") {
+                                 if (screen.width < "750") {
                                          SetLoader();
                                          window.location.href = "#investPage";
                                          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/newInvestment/?afForceMobile=true&afDisableMobileControls=true";
