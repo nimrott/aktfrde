@@ -696,12 +696,12 @@ function htmlClickEventHandlers(id, action) {
                 });
         $('#headerSearch' + id).off("click").on("click",
                 function () {
-                 if (screen.width < "800") {
-                   SetLoader();
-                   window.location.href = "#investPage";
-                   document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/newInvestment/?afForceMobile=true&afDisableMobileControls=true";
-                 } else {
-                        if (document.getElementById("suchKiste1").style.visibility == "hidden") {
+                 if (document.getElementById("suchKiste1").style.visibility == "hidden") {
+                                 if (screen.width < "800") {
+                                         SetLoader();
+                                         window.location.href = "#investPage";
+                                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/newInvestment/?afForceMobile=true&afDisableMobileControls=true";
+                                 } else {
                                  document.getElementById("suchKiste1").value="Name / ISIN suchen"; //stellt beim Sichtbarmachen wieder Standard her
                                  document.getElementById("suchKiste2").value="Name / ISIN suchen";
                                  document.getElementById("suchKiste3").value="Name / ISIN suchen";
@@ -717,7 +717,7 @@ function htmlClickEventHandlers(id, action) {
                                  document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_headerx.png";
                                  document.getElementById("headerSearchInvest").src="./images/icons/ic_action_search_headerx.png";
                                  document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_headerx.png";
-                           } else {
+                                  }} else {
                                  document.getElementById("suchKiste1").style.visibility="hidden";     //Versteckt sie wenn Sichtbar
                                  document.getElementById("suchKiste2").style.visibility="hidden";
                                  document.getElementById("suchKiste3").style.visibility="hidden";
@@ -728,7 +728,7 @@ function htmlClickEventHandlers(id, action) {
                                  document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
                                  document.getElementById("headerSearchInvest").src="./images/icons/ic_action_search_header.png";
                                  document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_header.png";
-                           }}
+                           }
                 });
         $('#headerSearch' + id).on("taphold",
                 function () {
