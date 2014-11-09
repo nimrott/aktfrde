@@ -691,12 +691,12 @@ function htmlClickEventHandlers(id, action) {
                 });
         $('#headerShare' + id).off("click").on("click",
                 function () {
-                          window.plugins.socialsharing.share('Message and subject', 'The subject')
+                          window.plugins.socialsharing.share('Hi, schau dir mal Aktienfreunde.net an. Hier habe ich inzwischen mein Depot, meine Watchlists und meine Statistiken eingestellt und würde gern mit dir über Investitionen diskutieren und Tipps austauschen.', 'Aktienfreunde - Dein Wertpapierdepot auf einen Blick', 'www/images/fb_icon.jpg', 'http://aktienfreunde.net'
 //                        share(window.localStorage.getItem('shareTagSubject'), window.localStorage.getItem('shareTagText'));
                 });
         $('#headerShare' + id).on("taphold",
                 function () {
-                        toast("Share.", "short");
+//                        toast("Share.", "short");
                 });
         $('#headerSearch' + id).off("click").on("click",
                 function () {
