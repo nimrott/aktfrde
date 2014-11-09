@@ -341,8 +341,8 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                                 <br><br>
                                Um zuk&uuml;nftig automatisch beim App-Start eingeloggt zu werden, speichern Sie hier ihre Login-Daten.<br><br>
                                <form action="http://aktienfreunde.net/j_spring_security_check" method="POST" id="loginForm" autocomplete="off" target="mainframe">
-                               <input type="text" class="text_" name="j_username" id="username" value="Benutzername"/>
-                               <input type="password" class="text_" name="j_password" id="password" value="Password"/>
+                               <input type="text" class="text_" name="j_username" id="username" value="Benutzername" onFocus="if(this.value=='Benutzername') this.value=''"/>
+                               <input type="password" class="text_" name="j_password" id="password" value="Password" onFocus="if(this.value=='Password') this.value=''"/>
                                <input type="checkbox" class="chk" name="_spring_security_remember_me" id="remember_me" style="display:none;" checked/>
                                <input type="button" id="button1" value="Login-Daten speichern" onclick="SavePass();"/>
                                <input type="button" id="button3" value="Login-Daten l&ouml;schen" onclick="DeletePass();"/>
