@@ -696,8 +696,10 @@ function htmlClickEventHandlers(id, action) {
                 });
         $('#headerSearch' + id).off("click").on("click",
                 function () {
-                 if (screen.width <= "500") {
-                   alert(screen.width);
+                 if (screen.width < "800") {
+                   SetLoader();
+                   window.location.href = "#investPage";
+                   document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/newInvestment/?afForceMobile=true&afDisableMobileControls=true";
                  } else {
                         if (document.getElementById("suchKiste1").style.visibility == "hidden") {
                                  document.getElementById("suchKiste1").value="Name / ISIN suchen"; //stellt beim Sichtbarmachen wieder Standard her
