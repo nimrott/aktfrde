@@ -430,37 +430,37 @@ function changeFrame1(){
 function changeFrame2(){
          SetLoader();
          window.location.href = "#investPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/list";
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/list/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame3(){
          SetLoader();
          window.location.href = "#investPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/statistic/index";
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/statistic/index/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame4(){
          SetLoader();
          window.location.href = "#investPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/watchlist/show";
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/watchlist/show/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame5(){
          SetLoader();
          window.location.href = "#investPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/profile/show";
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/profile/show/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame6(){
          SetLoader();
          window.location.href = "#investPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/friend/showFriends";
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/friend/showFriends/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame7(){
          SetLoader();
          window.location.href = "#investPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/showCashType";
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/showCashType/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame8(){
          SetLoader();
          window.location.href = "#investPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/interest/index";;
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/interest/index/?afForceMobile=true&afDisableMobileControls=true";;
          }
 function changeFrame9(){
          SetLoader();

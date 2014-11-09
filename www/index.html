@@ -158,7 +158,7 @@ input.suche[type='text']:hover, input.suche[type='text']:focus {
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px; " >
 
                          <img id="loader1" src="images/loading.gif" alt="loading" width="150" height="150"/>
-                         <iframe name="mainframe" src="http://aktienfreunde.net/logout/index" onLoad="hideLoader();"></iframe>
+                         <iframe name="mainframe" src="http://aktienfreunde.net/logout/index/?afForceMobile=true&afDisableMobileControls=true" onLoad="hideLoader();"></iframe>
 
                          <script>
                                  function hideLoader() {
@@ -373,19 +373,19 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
          function changeFramelogin(){
                   SetLoader();
                   window.location.href = "#investPage";
-                  document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/login/auth";
+                  document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/login/auth/?afForceMobile=true&afDisableMobileControls=true";
                   }
          function changeFramelogoff(){
                   SetLoader();
                   window.location.href = "#investPage";
-                  document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/logout/index";
+                  document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/logout/index/?afForceMobile=true&afDisableMobileControls=true";
                   }
          function FrameSearch1(e){
                   if (e.keyCode == 13) {      //faengt Entertaste ab
                          var suchwert1 = document.getElementById("suchKiste1").value;    //Uebergibt Suchfeldeingabe in Variable suchwert
                          SetLoader();         //setzte wieder Ladebild vor iframe um so den alten Inhalt zu verstecken bis Laden fertig
                          window.location.href = "#investPage";        //wechselt zur Invest Seite wo IFrame liegt
-                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=" + suchwert1; //aendere URL im Iframe mit Adresse der Suchmaske von Wolfram
+                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?afForceMobile=true&afDisableMobileControls=true&symbol=" + suchwert1; //aendere URL im Iframe mit Adresse der Suchmaske von Wolfram
                          document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
                          document.getElementById("suchKiste2").style.visibility="hidden";
                          document.getElementById("suchKiste3").style.visibility="hidden";
@@ -403,7 +403,7 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                          var suchwert2 = document.getElementById("suchKiste2").value;
                          SetLoader();
                          window.location.href = "#investPage";
-                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=" + suchwert2;
+                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?afForceMobile=true&afDisableMobileControls=true&symbol=" + suchwert2;
                          document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
                          document.getElementById("suchKiste2").style.visibility="hidden";
                          document.getElementById("suchKiste3").style.visibility="hidden";
@@ -421,7 +421,7 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                          var suchwert3 = document.getElementById("suchKiste3").value;
                          SetLoader();
                          window.location.href = "#investPage";
-                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=" + suchwert3;
+                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?afForceMobile=true&afDisableMobileControls=true&symbol=" + suchwert3;
                          document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
                          document.getElementById("suchKiste2").style.visibility="hidden";
                          document.getElementById("suchKiste3").style.visibility="hidden";
@@ -439,7 +439,7 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                          var suchwert4 = document.getElementById("suchKiste4").value;
                          SetLoader();
                          window.location.href = "#investPage";
-                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=" + suchwert4;
+                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?afForceMobile=true&afDisableMobileControls=true&symbol=" + suchwert4;
                          document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
                          document.getElementById("suchKiste2").style.visibility="hidden";
                          document.getElementById("suchKiste3").style.visibility="hidden";
@@ -457,7 +457,7 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                          var suchwert5 = document.getElementById("suchKiste5").value;
                          SetLoader();
                          window.location.href = "#investPage";
-                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?symbol=" + suchwert5;
+                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?afForceMobile=true&afDisableMobileControls=true&symbol=" + suchwert5;
                          document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
                          document.getElementById("suchKiste2").style.visibility="hidden";
                          document.getElementById("suchKiste3").style.visibility="hidden";
