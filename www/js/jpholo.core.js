@@ -609,15 +609,15 @@ function pressEffectHeader(share, action) {
         if (action === "menu") {
                 $("#headerTitle" + currentId).attr("src", "./images/icons/ic_launcher_full_menu.png");
                // detect swiperight to open left panel upon swiperight
-                 $("#" + $.mobile.pageContainer.pagecontainer("getActivePage")[0].id).off('swiperight').on('swiperight', function () {
+//                 $("#" + $.mobile.pageContainer.pagecontainer("getActivePage")[0].id).off('swiperight').on('swiperight', function () {
                         // check if there are no open panels, otherwise ignore swipe
-                        if (window.localStorage.getItem('panelLeft') !== "open" && window.localStorage.getItem('panelRight') !== "open") {
-                                togglePanel('#panelMenu' + currentId);
-                        }
-                });
+//                        if (window.localStorage.getItem('panelLeft') !== "open" && window.localStorage.getItem('panelRight') !== "open") {
+//                                togglePanel('#panelMenu' + currentId);
+//                        }
+//                });
         } else {
                 // remove swipe event, because there is no page visible with a panelmenu
-                $("#" + $.mobile.pageContainer.pagecontainer("getActivePage")[0].id).off('swiperight');
+//                $("#" + $.mobile.pageContainer.pagecontainer("getActivePage")[0].id).off('swiperight');
         }
         showNonContextButtons('panel');
         // header title press effect (left panel)
