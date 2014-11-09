@@ -158,13 +158,7 @@ input.suche[type='text']:hover, input.suche[type='text']:focus {
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px; " >
 
                          <img id="loader1" src="images/loading.gif" alt="loading" width="150" height="150"/>
-                         <iframe name="mainframe" src="http://aktienfreunde.net/logout/index/?afForceMobile=true&afDisableMobileControls=true" onLoad="hideLoader();"></iframe>
-
-                         <script>
-                                 function hideLoader() {
-                                                          document.getElementById('loader1').style.display = "none";
-                                                          }
-                         </script>
+                         <iframe name="mainframe" src="http://aktienfreunde.net/login/auth/?afForceMobile=true&afDisableMobileControls=true" onLoad="firstStart();"></iframe>
 
                         </div><!-- /content -->
 
@@ -346,29 +340,51 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                               </form>
                                 <br><br>
                                Um zuk&uuml;nftig automatisch beim App-Start eingeloggt zu werden, speichern Sie hier ihre Login-Daten.<br><br>
-                               <form>
-                               <input type="text" id="user" value="Benutzername" />
-                               <input type="password" id="userpwd" value="Password" />
-                               <input type="button" id="button1" value="Login speichern" onclick="SavePass();"/>
-                               <input type="button" id="button2" value="TEST Login anzeigen" onclick="GetPass();"/>
-                               <input type="button" id="button3" value="Alles l&ouml;schen" onclick="DeletePass();"/>
-
+                               <form action="http://aktienfreunde.net/j_spring_security_check" method="POST" id="loginForm" autocomplete="off" target="mainframe">
+                               <input type="text" class="text_" name="j_username" id="username" value="Benutzername"/>
+                               <input type="password" class="text_" name="j_password" id="password" value="Password"/>
+                               <input type="checkbox" class="chk" name="_spring_security_remember_me" id="remember_me" style="display:none;" checked/>
+                               <input type="button" id="button1" value="Login-Daten speichern" onclick="SavePass();"/>
+                               <input type="button" id="button3" value="Login-Daten l&ouml;schen" onclick="DeletePass();"/>
                                </form>
                         </div><!-- /content -->
 
                 </div><!-- /page -->
 <script>
+         function firstStart() {
+                 hideLoader();
+                 GetPass();
+                 }
+         function hideLoader() {
+                 document.getElementById('loader1').style.display = "none";
+                 }
          function SavePass(){
-                 window.localStorage.setItem("key1", document.getElementById('user').value);
-                 window.localStorage.setItem("key2", document.getElementById('userpwd').value);
+                 window.localStorage.setItem("key1", document.getElementById('username').value);
+                 window.localStorage.setItem("key2", document.getElementById('password').value);
+                 window.localStorage.setItem("key3", "1");
+                 alert('Logindaten gespeichert!');
                  }
          function GetPass() {
-                 var value = window.localStorage.getItem("key1");
-                 alert(value);
+                 var value3 = window.localStorage.getItem("key3");
+                   if (loadingFirst == '0') {         //auf jpholo js wird die variable zum ersten mal auf 0 gesetzt, d.h. beim ersten mal läufts durch dann nicht mehr
+                       if (value3 == '1') {                               //wenn im Local Storage etwas gespeichert wurde, wird es auch in das Formular gefuellt um es abschicken zu koennen, und lesbar zu machen wenn man auf die Seite geht
+                               loadingFirst = '1';       //setzt die variable ungleich 0 damit die Loginprozedur nicht jedesmal durchläuft wenn iframe ändert
+                               var value1 = window.localStorage.getItem("key1");  //Füllt die LoginVariablen aus dem Local Storage um einfacher zu nutzen
+                               var value2 = window.localStorage.getItem("key2");
+                               document.getElementById('username').value=value1;
+                               document.getElementById('password').value=value2;
+                               //document.getElementById('submitbtn').click(); return false;            Altenative, wenn im Formular auch ein Button gesetzt wird
+                               document.getElementById('loginForm').submit();
+                       } else {}
+                   } else {}
+
                  }
          function DeletePass() {
                   var value = window.localStorage.removeItem("key1");
                   var value = window.localStorage.removeItem("key2");
+                  window.localStorage.setItem("key3", "0");
+                  document.getElementById("username").value="Benutzername";
+                  document.getElementById("password").value="Password";
                   }
          function changeFramelogin(){
                   SetLoader();

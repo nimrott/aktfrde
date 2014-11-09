@@ -1,6 +1,9 @@
 // JSLint, include this before tests
 // var window, cordova, $, document, jQuery, navigator, device, onDeviceReady, onResume, onPause, pressBackButton, setTimeout, togglePanel, checkConnection, Connection, hideNonContextButtons, panelMenuLeftOpened, showNonContextButtons, initServiceSettings, panelMenuLeftClosed, androidServiceHandler, startPreLoadImages, onMenuKeyDown, onSearchKeyDown, checkOpenPanels;
 
+// globale Variable die am Anfang auf 0 gesetzt wird, damit beim ersten Start der LoginProzess ausgefuehrt werden kann
+var loadingFirst = '0';
+
 // global settings
 window.androidPrefsLib = "jpHoloSharedPreferences";
 window.loadingAnimation = '<div class="loading"><div class="outer"></div><div class="inner"></div></div>';
@@ -241,18 +244,18 @@ function onDeviceReady() {
         // check if Android Service is running and needs to be running and act accordingly
         androidServiceHandler("getStatus", "none");
         // demonstrate panel menu on first boot
-        if (window.localStorage.getItem('firstBoot') !== 'done') {
-                var headerTitle = $("#headerTitle" + window.localStorage.getItem("divIdGlobal"));
-                headerTitle.addClass("holoPressEffect");
-                setTimeout(function () {
-                        togglePanel('#panelMenuIndex');
-                }, 500);
-                setTimeout(function () {
-                        headerTitle.removeClass("holoPressEffect");
-                        togglePanel('#panelMenuIndex');
-                }, 1500);
-                window.localStorage.setItem('firstBoot', 'done');
-        }
+//        if (window.localStorage.getItem('firstBoot') !== 'done') {
+//                var headerTitle = $("#headerTitle" + window.localStorage.getItem("divIdGlobal"));
+//                headerTitle.addClass("holoPressEffect");
+//                setTimeout(function () {
+//                        togglePanel('#panelMenuIndex');
+//                }, 500);
+//                setTimeout(function () {
+//                        headerTitle.removeClass("holoPressEffect");
+//                        togglePanel('#panelMenuIndex');
+//                }, 1500);
+//                window.localStorage.setItem('firstBoot', 'done');
+//        }
 }
 
 // event handler orientationchange
@@ -344,7 +347,7 @@ function onMenuKeyDown() {
 
 // search button
 function onSearchKeyDown() {
-   // toast('You want to search?', 'short');
+   GoToSearch();
 }
 
 // pause app
@@ -605,8 +608,8 @@ function pressEffectHeader(share, action) {
         // restore icons
         if (action === "menu") {
                 $("#headerTitle" + currentId).attr("src", "./images/icons/ic_launcher_full_menu.png");
-                // detect swiperight to open left panel upon swiperight
-                $("#" + $.mobile.pageContainer.pagecontainer("getActivePage")[0].id).off('swiperight').on('swiperight', function () {
+               // detect swiperight to open left panel upon swiperight
+                 $("#" + $.mobile.pageContainer.pagecontainer("getActivePage")[0].id).off('swiperight').on('swiperight', function () {
                         // check if there are no open panels, otherwise ignore swipe
                         if (window.localStorage.getItem('panelLeft') !== "open" && window.localStorage.getItem('panelRight') !== "open") {
                                 togglePanel('#panelMenu' + currentId);
@@ -698,9 +701,7 @@ function htmlClickEventHandlers(id, action) {
                 function () {
                  if (document.getElementById("suchKiste1").style.visibility == "hidden") {
                                  if (screen.width < "750") {
-                                         SetLoader();
-                                         window.location.href = "#investPage";
-                                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/newInvestment/?afForceMobile=true&afDisableMobileControls=true";
+                                         GoToSearch();
                                  } else {
                                  document.getElementById("suchKiste1").value="Name / ISIN suchen"; //stellt beim Sichtbarmachen wieder Standard her
                                  document.getElementById("suchKiste2").value="Name / ISIN suchen";
@@ -769,6 +770,13 @@ function htmlClickEventHandlers(id, action) {
                         toast("Toast.", "short");
                 });
         }
+}
+
+//GoToSearchPage verlinkt automatisch auf Suchenseite...wenn Display zu klein fuer Menuesuche oder wenn DeviceSearchButton gedrueckt wird
+function GoToSearch() {
+                         SetLoader();
+                         window.location.href = "#investPage";
+                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/newInvestment/?afForceMobile=true&afDisableMobileControls=true";
 }
 
 // initialize page variables and elements on create
