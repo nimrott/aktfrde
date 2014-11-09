@@ -696,6 +696,9 @@ function htmlClickEventHandlers(id, action) {
                 });
         $('#headerSearch' + id).off("click").on("click",
                 function () {
+                 if (screen.width <= "500") {
+                   alert(screen.width);
+                 } else {
                         if (document.getElementById("suchKiste1").style.visibility == "hidden") {
                                  document.getElementById("suchKiste1").value="Name / ISIN suchen"; //stellt beim Sichtbarmachen wieder Standard her
                                  document.getElementById("suchKiste2").value="Name / ISIN suchen";
@@ -723,7 +726,7 @@ function htmlClickEventHandlers(id, action) {
                                  document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
                                  document.getElementById("headerSearchInvest").src="./images/icons/ic_action_search_header.png";
                                  document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_header.png";
-                           }
+                           }}
                 });
         $('#headerSearch' + id).on("taphold",
                 function () {
