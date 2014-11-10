@@ -3,6 +3,7 @@
 
 // globale Variable die am Anfang auf 0 gesetzt wird, damit beim ersten Start der LoginProzess ausgefuehrt werden kann
 var loadingFirst = '0';
+var gaPlugin;
 
 // global settings
 window.androidPrefsLib = "jpHoloSharedPreferences";
@@ -243,6 +244,10 @@ function onDeviceReady() {
         document.addEventListener("searchbutton", onSearchKeyDown, false);
         // check if Android Service is running and needs to be running and act accordingly
         androidServiceHandler("getStatus", "none");
+
+        //start and initialize GA-Plugin
+        gaPlugin = window.plugins.gaPlugin;
+        gaPlugin.init(successHandlerGA(), errorHandlerGA(), "UA-56597718-1", 10);
         // demonstrate panel menu on first boot
 //        if (window.localStorage.getItem('firstBoot') !== 'done') {
 //                var headerTitle = $("#headerTitle" + window.localStorage.getItem("divIdGlobal"));
@@ -257,6 +262,9 @@ function onDeviceReady() {
 //                window.localStorage.setItem('firstBoot', 'done');
 //        }
 }
+
+function successHandlerGA() {};
+function errorHandlerGA() {};
 
 // event handler orientationchange
 $(window).bind('orientationchange',
@@ -322,6 +330,7 @@ function pressBackButton() {
         // if panel is not open, then go on
         if (checkOpenPanels() === false) {
                 if ($.mobile.pageContainer.pagecontainer("getActivePage")[0].id === "indexPage") {
+                        gaPlugin.exit(successHandlerGA(), errorHandlerGA()); // Raeumt auf vor beendigung der app
                         navigator.app.exitApp(); // This will exit the app.
                         // homeButton(); // This will push the app to the background.
                 } else {
@@ -347,6 +356,7 @@ function onMenuKeyDown() {
 
 // search button
 function onSearchKeyDown() {
+   gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "Nativer Searchbutton", 1)
    GoToSearch();
 }
 
@@ -422,55 +432,66 @@ function SetLoader() {
          }
 function changeFrame0(){
          SetLoader();       //setzte Ladebild um Iframe zu verstecken bis fertiggeladen
+         gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "Investmentcockpit", 1);
          window.location.href = "#indexPage";        //springt zum Index
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/list/?theme=Generic+jQuery+Mobile+Theme+1.2.0&passkey=93948456754418bf9a2e55";  //laedt neue seite in iframe
          }
 function changeFrame1(){
          SetLoader();                                 //setzte Ladebild um Iframe zu verstecken bis fertiggeladen
+         gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "Finanzblog", 1)
          window.location.href = "#indexPage";       // springe zur Investmentseite wo IFrame eingebettet ist
          document.getElementsByName("mainframe")[0].src="http://blog.aktienfreunde.net/artikel/?theme=Generic+jQuery+Mobile+Theme+1.2.0&passkey=93948456754418bf9a2e55";  //laedt neue seite in iframe
          }
 function changeFrame3(){
          SetLoader();
+         gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "Statisitken", 1)
          window.location.href = "#indexPage";
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/statistic/index/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame4(){
          SetLoader();
+         gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "Watchlisten", 1)
          window.location.href = "#indexPage";
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/watchlist/show/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame5(){
          SetLoader();
+         gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "Profil", 1)
          window.location.href = "#indexPage";
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/profile/show/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame6(){
          SetLoader();
+         gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "Freunde", 1)
          window.location.href = "#indexPage";
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/friend/showFriends/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame7(){
          SetLoader();
+         gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "Gegenkonto", 1)
          window.location.href = "#indexPage";
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/showCashType/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame8(){
          SetLoader();
+         gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "Finanztools", 1)
          window.location.href = "#indexPage";
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/interest/index/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame9(){
          SetLoader();
+         gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "Impressum", 1)
          window.location.href = "#impressumPage";
          }
 function changeFrame10(){
          SetLoader();
+         gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "Depotauswahl", 1)
          window.location.href = "#indexPage";
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/account/index/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame11(){
          SetLoader();
+         gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "Loginseite", 1)
          window.location.href = "#servicePage";
          }
 
@@ -679,6 +700,7 @@ function htmlClickEventHandlers(id, action) {
         // every page
         $('#headerTitle' + id).off("click").on("click",
                 function () {
+                         gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "linkes Menue geoeffnet", 1)
                         if (action !== "back") {
                                 togglePanel('#panelMenu' + id);
                         } else {
@@ -687,6 +709,7 @@ function htmlClickEventHandlers(id, action) {
                 });
         $('#headerShare' + id).off("click").on("click",
                 function () {
+                         gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "Sharebutton geklickt", 1)
                           window.plugins.socialsharing.share('Hi, schau dir mal Aktienfreunde.net an. Hier habe ich inzwischen mein Depot, meine Watchlists und meine Statistiken eingestellt und wuerde gern mit dir ueber Investitionen diskutieren und Tipps austauschen.', 'Aktienfreunde - Dein Wertpapierdepot auf einen Blick', null, 'http://aktienfreunde.net');
 //                        share(window.localStorage.getItem('shareTagSubject'), window.localStorage.getItem('shareTagText'));
                 });
@@ -696,6 +719,7 @@ function htmlClickEventHandlers(id, action) {
                 });
         $('#headerSearch' + id).off("click").on("click",
                 function () {
+                gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "Suchlupe angeklickt", 1)
                  if (document.getElementById("suchKiste1").style.visibility == "hidden") {
                                  if (screen.width < "750") {
                                          GoToSearch();
@@ -729,6 +753,7 @@ function htmlClickEventHandlers(id, action) {
                 });
         $('#headerOverflow' + id).off("click").on("click",
                 function () {
+               gaPlugin.trackEvent( successHandlerGA, errorHandlerGA, "Button", "Click", "rechtes Menue geoeffnet", 1)
                         togglePanel('#panelMenuRight' + id);
                 });
         // specific page...
