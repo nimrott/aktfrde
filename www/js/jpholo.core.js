@@ -421,6 +421,9 @@ function panelMenuRight(divId) {
 function SetLoader() {
          document.getElementById('loader1').style.display = "inline";   //zeigt Lade GIF ueber dem Iframe
          document.getElementById("headerShareIndex").src="./images/icons/loading.gif";
+         document.getElementById("headerShareImpressum").src="./images/icons/loading.gif";
+         document.getElementById("headerShareDatenschutz").src="./images/icons/loading.gif";
+         document.getElementById("headerShareService").src="./images/icons/loading.gif";
          }
 function changeFrame0(){
          SetLoader();       //setzte Ladebild um Iframe zu verstecken bis fertiggeladen
@@ -690,7 +693,7 @@ function htmlClickEventHandlers(id, action) {
         $('#headerShare' + id).off("click").on("click",
                 function () {
 //wird voruebergehend benutzt um Iframe zu Refreshen wenn Refresh also neuer ShareButton gedrueckt wird.
-                SetLoader();   
+                SetLoader();
                 document.getElementsByName("mainframe")[0].src = document.getElementsByName("mainframe")[0].src;
 //erste ausgeklammerte Moeglichkeit mit Shareplugin, und zweite Ausgeklammerte Zeile fuer ShareIntern also nur Email
 //                        window.plugins.socialsharing.share('Hi, schau dir mal Aktienfreunde.net an. Hier habe ich inzwischen mein Depot, meine Watchlists und meine Statistiken eingestellt und wuerde gern mit dir ueber Investitionen diskutieren und Tipps austauschen.', 'Aktienfreunde - Dein Wertpapierdepot auf einen Blick', null, 'http://aktienfreunde.net');
