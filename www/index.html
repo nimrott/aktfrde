@@ -316,7 +316,14 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
          function firstStart() {
                  hideLoader();
                  GetPass();
+                 fixiFrame();
                  }
+         function fixiFrame () {
+                 if ((android) && (androidVersion > 3)) {
+                         iFrameContentHeight = document.getElementByName('mainframe').contentDocument.body.offsetHeight;
+                         document.getElementByName('mainframe').style.height = iFrameContentHeight + 'px';
+                 }
+         }
          function hideLoader() {
                  document.getElementById('loader1').style.display = "none";
                  }
@@ -368,7 +375,6 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                          document.getElementById("suchKiste2").style.visibility="hidden";
                          document.getElementById("suchKiste3").style.visibility="hidden";
                          document.getElementById("suchKiste4").style.visibility="hidden";
-                         document.getElementById("suchKiste5").style.visibility="hidden";
                          document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
                          document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
                          document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
@@ -385,7 +391,6 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                          document.getElementById("suchKiste2").style.visibility="hidden";
                          document.getElementById("suchKiste3").style.visibility="hidden";
                          document.getElementById("suchKiste4").style.visibility="hidden";
-                         document.getElementById("suchKiste5").style.visibility="hidden";
                          document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
                          document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
                          document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
@@ -402,7 +407,6 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                          document.getElementById("suchKiste2").style.visibility="hidden";
                          document.getElementById("suchKiste3").style.visibility="hidden";
                          document.getElementById("suchKiste4").style.visibility="hidden";
-                         document.getElementById("suchKiste5").style.visibility="hidden";
                          document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
                          document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
                          document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
@@ -419,24 +423,6 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                          document.getElementById("suchKiste2").style.visibility="hidden";
                          document.getElementById("suchKiste3").style.visibility="hidden";
                          document.getElementById("suchKiste4").style.visibility="hidden";
-                         document.getElementById("suchKiste5").style.visibility="hidden";
-                         document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_header.png";
-                         return false;
-                  }}
-         function FrameSearch5(e){
-                  if (e.keyCode == 13) {
-                         var suchwert5 = document.getElementById("suchKiste5").value;
-                         SetLoader();
-                         window.location.href = "#indexPage";
-                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?afForceMobile=true&afDisableMobileControls=true&symbol=" + suchwert5;
-                         document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
-                         document.getElementById("suchKiste2").style.visibility="hidden";
-                         document.getElementById("suchKiste3").style.visibility="hidden";
-                         document.getElementById("suchKiste4").style.visibility="hidden";
-                         document.getElementById("suchKiste5").style.visibility="hidden";
                          document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
                          document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
                          document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
