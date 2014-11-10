@@ -110,7 +110,7 @@ input.suche[type='text']:hover, input.suche[type='text']:focus {
                         <input type="text" id="suchKiste4" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch4(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
 
                                 <div>
-                                        <p class="headerBarText"><img id="headerTitleIndex" class="headerIconTitle" src="./images/icons/ic_launcher_full_arrow.png" /><img id="headerSearchIndex" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareIndex" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowIndex" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        <p class="headerBarText"><img id="headerTitleIndex" class="headerIconTitle" src="./images/icons/ic_launcher_full_arrow.png" /><img id="headerSearchIndex" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareIndex" class="headerIconSecondRight" src="./images/icons/refresh.gif" /><img id="headerOverflowIndex" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
                                         &nbsp;</p>
                                 </div>
                         </div><!-- /header -->
@@ -143,7 +143,7 @@ input.suche[type='text']:hover, input.suche[type='text']:focus {
                         <input type="text" id="suchKiste3" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch3(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
 
                                 <div>
-                                        <p class="headerBarText"><img id="headerTitleImpressum" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchImpressum" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareImpressum" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowImpressum" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        <p class="headerBarText"><img id="headerTitleImpressum" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchImpressum" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareImpressum" class="headerIconSecondRight" src="./images/icons/refresh.gif" /><img id="headerOverflowImpressum" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
                                         &nbsp;</p>
                                 </div><!-- populate the panel menu, also with the id Index in this case -->
                         </div><!-- /header -->
@@ -254,7 +254,7 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                                 <input type="text" id="suchKiste2" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch2(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
 
                                 <div>
-                                        <p class="headerBarText"><img id="headerTitleDatenschutz" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchDatenschutz" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareDatenschutz" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowDatenschutz" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        <p class="headerBarText"><img id="headerTitleDatenschutz" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchDatenschutz" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareDatenschutz" class="headerIconSecondRight" src="./images/icons/refresh.gif" /><img id="headerOverflowDatenschutz" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
                                         &nbsp;</p>
                                 </div><!-- populate the panel menu, also with the id Index in this case -->
                         </div><!-- /header -->
@@ -289,7 +289,7 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                                 <input type="text" id="suchKiste1" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch1(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
 
                                 <div>
-                                        <p class="headerBarText"><img id="headerTitleService" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchService" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareService" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowService" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        <p class="headerBarText"><img id="headerTitleService" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchService" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareService" class="headerIconSecondRight" src="./images/icons/refresh.gif" /><img id="headerOverflowService" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
                                         &nbsp;</p>
                                 </div>
                         </div><!-- /header -->
@@ -326,6 +326,7 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
          }
          function hideLoader() {
                  document.getElementById('loader1').style.display = "none";
+                 document.getElementById("headerShareIndex").src="./images/icons/refresh.gif";
                  }
          function SavePass(){
                  window.localStorage.setItem("key1", document.getElementById('username').value);

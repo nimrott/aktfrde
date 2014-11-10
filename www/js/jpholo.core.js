@@ -283,7 +283,8 @@ function startPreLoadImages() {
                 "./images/icons/ic_action_info.png",
                 "./images/icons/ic_action_list_header.png",
                 "./images/icons/ic_action_overflow_header.png",
-                "./images/icons/ic_action_share_header.png",
+                "./images/icons/refresh.gif",
+                "./images/icons/loading.gif",
                 "./images/icons/ic_action_search_header.png",
                 "./images/icons/ic_launcher_full_arrow.png",
                 "./images/icons/ic_launcher_full_menu.png",
@@ -419,6 +420,7 @@ function panelMenuRight(divId) {
 
 function SetLoader() {
          document.getElementById('loader1').style.display = "inline";   //zeigt Lade GIF ueber dem Iframe
+         document.getElementById("headerShareIndex").src="./images/icons/loading.gif";
          }
 function changeFrame0(){
          SetLoader();       //setzte Ladebild um Iframe zu verstecken bis fertiggeladen
@@ -688,7 +690,8 @@ function htmlClickEventHandlers(id, action) {
         $('#headerShare' + id).off("click").on("click",
                 function () {
 //wird voruebergehend benutzt um Iframe zu Refreshen wenn Refresh also neuer ShareButton gedrueckt wird.
-                document.getElementByName('mainframe').src = document.getElementByName('mainframe').src;
+                SetLoader();   
+                document.getElementsByName("mainframe")[0].src = document.getElementsByName("mainframe")[0].src;
 //erste ausgeklammerte Moeglichkeit mit Shareplugin, und zweite Ausgeklammerte Zeile fuer ShareIntern also nur Email
 //                        window.plugins.socialsharing.share('Hi, schau dir mal Aktienfreunde.net an. Hier habe ich inzwischen mein Depot, meine Watchlists und meine Statistiken eingestellt und wuerde gern mit dir ueber Investitionen diskutieren und Tipps austauschen.', 'Aktienfreunde - Dein Wertpapierdepot auf einen Blick', null, 'http://aktienfreunde.net');
 //                        share(window.localStorage.getItem('shareTagSubject'), window.localStorage.getItem('shareTagText'));
