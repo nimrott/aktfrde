@@ -70,7 +70,7 @@
 
     -->
        <gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
-       <gap:plugin name="com.adobe.plugins.gaplugin" version="2.3.1" />
+
 
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
