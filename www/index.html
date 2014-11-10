@@ -50,9 +50,8 @@
         html, body { margin: 0; padding: 0; height: 100%; }
         iframe {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0; left: 0; width: 100%;
             border: none; padding-top: 50px;
-            box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;
         }
         body {
                  overflow:hidden;
@@ -319,10 +318,10 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                  fixiFrame();
                  }
          function fixiFrame () {
-                 if ((android) && (androidVersion > 3)) {
+         //        if ((android) && (androidVersion > 3)) {
                          iFrameContentHeight = document.getElementByName('mainframe').contentDocument.body.offsetHeight;
                          document.getElementByName('mainframe').style.height = iFrameContentHeight + 'px';
-                 }
+         //        }
          }
          function hideLoader() {
                  document.getElementById('loader1').style.display = "none";
