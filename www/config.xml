@@ -56,8 +56,8 @@
     <gap:plugin name="org.apache.cordova.file" />
     <gap:plugin name="org.apache.cordova.file-transfer" /> -->
     <!--<gap:plugin name="org.apache.cordova.geolocation" />
-    <gap:plugin name="org.apache.cordova.globalization" />  -->
-    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <gap:plugin name="org.apache.cordova.globalization" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" />  -->
     <!--<gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="org.apache.cordova.network-information" />-->
     <gap:plugin name="org.apache.cordova.splashscreen" />
@@ -69,7 +69,7 @@
         <gap:plugin name="com.phonegap.plugins.barcodescanner" />
 
     -->
-       <gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" /> 
+       <gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
 
 
     <!-- Define app icon for each platform. -->
