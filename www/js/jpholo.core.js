@@ -390,10 +390,9 @@ function panelMenu(divId) {
         var panel = $('#panelMenu' + divId + 'UL');
         panel.children().remove('li');
         panel.append('<li data-icon="false" class="headerSpace"><p>&nbsp;</p></li>'); // empty space, needed for header
-        panel.append('<li data-role="list-divider"><p class="panelTextDivider">App</p></li>');
-        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame0(); return false;"><img src="./images/icons/ic_action_home.png" class="ui-li-icon largerIcon">Investments</a></li>');
+        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame0(); return false;"><img src="./images/icons/ic_action_home.png" class="ui-li-icon largerIcon">Investmentcockpit</a></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame1(); return false;"><img src="./images/icons/ic_action_home.png" class="ui-li-icon largerIcon">Finanzblog</a></li>');
-        panel.append('<li data-role="list-divider"><p class="panelTextDivider">Finanzverwaltung</p></li>');
+        panel.append('<li data-role="list-divider"><p class="panelTextDivider">Finanz&uuml;bersicht</p></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame3(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Statistiken</a></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame4(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Watchlisten</a></li>');
         panel.append('<li data-role="list-divider"><p class="panelTextDivider">Soziales</p></li>');
@@ -407,12 +406,13 @@ function panelMenuRight(divId) {
         var panel = $('#panelMenuRight' + divId + 'UL');
         panel.children().remove('li');
         panel.append('<li data-icon="false" class="headerSpace"><p>&nbsp;</p></li>'); // empty space, needed for header
-        panel.append('<li data-role="list-divider"><p class="panelTextDivider">Weiteres</p></li>');
+        panel.append('<li data-role="list-divider"><p class="panelTextDivider">Verwaltung</p></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame7(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Gegenkonto</a></li>');
+        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame10(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Depots verwalten</a></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame8(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Finanzrechner</a></li>');
         panel.append('<li data-role="list-divider"><p class="panelTextDivider">Zur App</p></li>');
-        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame9(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Impressum</a></li>');
-        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame10(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Datenschutz</a></li>');
+        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame9(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Impressum &frasl; Datenschutz</a></li>');
+
         panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame11(); return false;"><img src="./images/icons/ic_action_home.png" class="ui-li-icon largerIcon">Login &frasl; Logout</a></li>');
         panel.listview('refresh');
 }
@@ -423,6 +423,7 @@ function SetLoader() {
 function changeFrame0(){
          SetLoader();       //setzte Ladebild um Iframe zu verstecken bis fertiggeladen
          window.location.href = "#indexPage";        //springt zum Index
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/list/?theme=Generic+jQuery+Mobile+Theme+1.2.0&passkey=93948456754418bf9a2e55";  //laedt neue seite in iframe
          }
 function changeFrame1(){
          SetLoader();                                 //setzte Ladebild um Iframe zu verstecken bis fertiggeladen
@@ -457,7 +458,7 @@ function changeFrame7(){
 function changeFrame8(){
          SetLoader();
          window.location.href = "#indexPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/interest/index/?afForceMobile=true&afDisableMobileControls=true";;
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/interest/index/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame9(){
          SetLoader();
@@ -465,7 +466,8 @@ function changeFrame9(){
          }
 function changeFrame10(){
          SetLoader();
-         window.location.href = "#datenschutzPage";
+         window.location.href = "#indexPage";
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/account/index/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame11(){
          SetLoader();

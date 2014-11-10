@@ -118,7 +118,7 @@ input.suche[type='text']:hover, input.suche[type='text']:focus {
                         <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px; " >
 
                          <img id="loader1" src="images/loading.gif" alt="loading" width="150" height="150"/>
-                         <iframe name="mainframe" src="http://aktienfreunde.net/login/auth/?afForceMobile=true&afDisableMobileControls=true" onLoad="firstStart();"></iframe>
+                         <iframe name="mainframe" src="http://aktienfreunde.net/investment/list/?afForceMobile=true&afDisableMobileControls=true" onLoad="firstStart();"></iframe>
 
                         </div><!-- /content -->
 
@@ -163,39 +163,7 @@ R&uuml;ckerstr. 1<br>
 De Fortuna 11<br>
 NL-7102ZZ Winterswijk</p>
 
-                        </div><!-- /content -->
-
-                </div><!-- /page -->
-
-                <div id="datenschutzPage" data-role="page" data-theme="a"><!-- id to tie the page event to this specific page -->
-
-                        <!-- left panel  -->
-                        <div id="panelMenuDatenschutz" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
-                                <ul id="panelMenuDatenschutzUL" data-role="listview"></ul>
-                        </div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
-                        <!-- /panel -->
-
-                        <!-- right panel  -->
-                        <div id="panelMenuRightDatenschutz" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
-                                <ul id="panelMenuRightDatenschutzUL" data-role="listview"></ul>
-                        </div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
-                        <!-- /panel -->
-
-                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
-
-                                <input type="text" id="suchKiste2" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch2(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
-
-                                <div>
-                                        <p class="headerBarText"><img id="headerTitleDatenschutz" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchDatenschutz" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareDatenschutz" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowDatenschutz" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
-                                        &nbsp;</p>
-                                </div><!-- populate the panel menu, also with the id Index in this case -->
-                        </div><!-- /header -->
-
-                        <div role="main" class="ui-content" data-theme="a">
-
-
-
-                                        <h1>Datenschutz</h1>
+<h1>Datenschutz</h1>
                                         <p>aktienfreunde.net ist eine nicht-kommerzielle Seite und behandelt Ihre Daten absolut vertraulich.
 Es findet keinerlei Weitergabe von Daten an Dritte statt.
 
@@ -262,6 +230,40 @@ aktienfreunde.net sch&uuml;tzt Ihre Daten vor dem unberechtigten Zugriff Dritter
 Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerkl&auml;rung ein. Ihre Einwilligungserkl&auml;rung k&ouml;nnen Sie jederzeit mit Wirkung f&uuml;r die Zukunft widerrufen.  </p>
 
 
+
+                        </div><!-- /content -->
+
+                </div><!-- /page -->
+
+                <div id="datenschutzPage" data-role="page" data-theme="a"><!-- id to tie the page event to this specific page -->
+
+                        <!-- left panel  -->
+                        <div id="panelMenuDatenschutz" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuDatenschutzUL" data-role="listview"></ul>
+                        </div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+                        <!-- /panel -->
+
+                        <!-- right panel  -->
+                        <div id="panelMenuRightDatenschutz" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+                                <ul id="panelMenuRightDatenschutzUL" data-role="listview"></ul>
+                        </div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+                        <!-- /panel -->
+
+                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+
+                                <input type="text" id="suchKiste2" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch2(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
+
+                                <div>
+                                        <p class="headerBarText"><img id="headerTitleDatenschutz" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchDatenschutz" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareDatenschutz" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" /><img id="headerOverflowDatenschutz" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+                                        &nbsp;</p>
+                                </div><!-- populate the panel menu, also with the id Index in this case -->
+                        </div><!-- /header -->
+
+                        <div role="main" class="ui-content" data-theme="a">
+
+
+
+                                        DERZEIT LEER
 
                         </div><!-- /content -->
 
