@@ -466,7 +466,7 @@ function changeFrame8(){
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/interest/index/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame9(){
-         SetLoader();
+         //kein SetLoader weil keine Webpage
          window.location.href = "#impressumPage";
          }
 function changeFrame10(){
@@ -475,7 +475,7 @@ function changeFrame10(){
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/account/index/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame11(){
-         SetLoader();
+         //kein SeitLoader weil keine Webpage
          window.location.href = "#servicePage";
          }
 
