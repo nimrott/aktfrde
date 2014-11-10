@@ -687,7 +687,10 @@ function htmlClickEventHandlers(id, action) {
                 });
         $('#headerShare' + id).off("click").on("click",
                 function () {
-                          window.plugins.socialsharing.share('Hi, schau dir mal Aktienfreunde.net an. Hier habe ich inzwischen mein Depot, meine Watchlists und meine Statistiken eingestellt und wuerde gern mit dir ueber Investitionen diskutieren und Tipps austauschen.', 'Aktienfreunde - Dein Wertpapierdepot auf einen Blick', null, 'http://aktienfreunde.net');
+//wird voruebergehend benutzt um Iframe zu Refreshen wenn Refresh also neuer ShareButton gedrueckt wird.
+                document.getElementByName('mainframe').src = document.getElementByName('mainframe').src;
+//erste ausgeklammerte Moeglichkeit mit Shareplugin, und zweite Ausgeklammerte Zeile fuer ShareIntern also nur Email
+//                        window.plugins.socialsharing.share('Hi, schau dir mal Aktienfreunde.net an. Hier habe ich inzwischen mein Depot, meine Watchlists und meine Statistiken eingestellt und wuerde gern mit dir ueber Investitionen diskutieren und Tipps austauschen.', 'Aktienfreunde - Dein Wertpapierdepot auf einen Blick', null, 'http://aktienfreunde.net');
 //                        share(window.localStorage.getItem('shareTagSubject'), window.localStorage.getItem('shareTagText'));
                 });
         $('#headerShare' + id).on("taphold",
