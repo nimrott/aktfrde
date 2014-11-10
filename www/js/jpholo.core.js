@@ -391,10 +391,9 @@ function panelMenu(divId) {
         panel.children().remove('li');
         panel.append('<li data-icon="false" class="headerSpace"><p>&nbsp;</p></li>'); // empty space, needed for header
         panel.append('<li data-role="list-divider"><p class="panelTextDivider">App</p></li>');
-        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame0(); return false;"><img src="./images/icons/ic_action_home.png" class="ui-li-icon largerIcon">Startseite</a></li>');
+        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame0(); return false;"><img src="./images/icons/ic_action_home.png" class="ui-li-icon largerIcon">Investments</a></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame1(); return false;"><img src="./images/icons/ic_action_home.png" class="ui-li-icon largerIcon">Finanzblog</a></li>');
         panel.append('<li data-role="list-divider"><p class="panelTextDivider">Finanzverwaltung</p></li>');
-        panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame2(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Investments</a></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame3(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Statistiken</a></li>');
         panel.append('<li data-icon="false"><a class="panelText" href="" onClick="changeFrame4(); return false;"><img src="./images/icons/ic_action_info.png" class="ui-li-icon largerIcon">Watchlisten</a></li>');
         panel.append('<li data-role="list-divider"><p class="panelTextDivider">Soziales</p></li>');
@@ -427,42 +426,37 @@ function changeFrame0(){
          }
 function changeFrame1(){
          SetLoader();                                 //setzte Ladebild um Iframe zu verstecken bis fertiggeladen
-         window.location.href = "#investPage";       // springe zur Investmentseite wo IFrame eingebettet ist
+         window.location.href = "#indexPage";       // springe zur Investmentseite wo IFrame eingebettet ist
          document.getElementsByName("mainframe")[0].src="http://blog.aktienfreunde.net/artikel/?theme=Generic+jQuery+Mobile+Theme+1.2.0&passkey=93948456754418bf9a2e55";  //laedt neue seite in iframe
-         }
-function changeFrame2(){
-         SetLoader();
-         window.location.href = "#investPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/list/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame3(){
          SetLoader();
-         window.location.href = "#investPage";
+         window.location.href = "#indexPage";
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/statistic/index/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame4(){
          SetLoader();
-         window.location.href = "#investPage";
+         window.location.href = "#indexPage";
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/watchlist/show/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame5(){
          SetLoader();
-         window.location.href = "#investPage";
+         window.location.href = "#indexPage";
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/profile/show/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame6(){
          SetLoader();
-         window.location.href = "#investPage";
+         window.location.href = "#indexPage";
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/friend/showFriends/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame7(){
          SetLoader();
-         window.location.href = "#investPage";
+         window.location.href = "#indexPage";
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/showCashType/?afForceMobile=true&afDisableMobileControls=true";
          }
 function changeFrame8(){
          SetLoader();
-         window.location.href = "#investPage";
+         window.location.href = "#indexPage";
          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/interest/index/?afForceMobile=true&afDisableMobileControls=true";;
          }
 function changeFrame9(){
@@ -717,7 +711,6 @@ function htmlClickEventHandlers(id, action) {
                                  document.getElementById("headerSearchService").src="./images/icons/ic_action_search_headerx.png";  //macht X hinter Suchfeld
                                  document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_headerx.png";
                                  document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_headerx.png";
-                                 document.getElementById("headerSearchInvest").src="./images/icons/ic_action_search_headerx.png";
                                  document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_headerx.png";
                                   }} else {
                                  document.getElementById("suchKiste1").style.visibility="hidden";     //Versteckt sie wenn Sichtbar
@@ -728,7 +721,6 @@ function htmlClickEventHandlers(id, action) {
                                  document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";  //macht aus X wieder Lupe
                                  document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
                                  document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
-                                 document.getElementById("headerSearchInvest").src="./images/icons/ic_action_search_header.png";
                                  document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_header.png";
                            }
                 });
@@ -749,8 +741,6 @@ function htmlClickEventHandlers(id, action) {
         } else if (id === "Second") {
                 // do nothing
         } else if (id === "Other") {
-                // do nothing
-        } else if (id === "Invest") {
                 // do nothing
         } else if (id === "Service") {
                 initServiceSettings();
@@ -776,7 +766,7 @@ function htmlClickEventHandlers(id, action) {
 //GoToSearchPage verlinkt automatisch auf Suchenseite...wenn Display zu klein fuer Menuesuche oder wenn DeviceSearchButton gedrueckt wird
 function GoToSearch() {
                          SetLoader();
-                         window.location.href = "#investPage";
+                         window.location.href = "#indexPage";
                          document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/newInvestment/?afForceMobile=true&afDisableMobileControls=true";
 }
 
@@ -797,8 +787,6 @@ function initPageVarsOnCreate(id) {
         if (id === "Index") {
         //        isDeviceReady("valueTester", "toastReady");
         } else if (id === "Other") {
-        //        // do nothing
-        } else if (id === "Invest") {
         //        // do nothing
         }
 }
@@ -825,8 +813,6 @@ function initPageVarsOnShow(id) {
         } else if (id === "Other") {
                 pressEffectFooter(true, true);
                 getSystemSpecs();
-        } else if (id === "Invest") {
-                pressEffectFooter(true, true);
         } else if (id === "Service") {
                 pressEffectFooter(true, true);
                 androidServiceHandler("getStatus", "none");
@@ -856,15 +842,6 @@ $(document).on('pagebeforeshow', '#servicePage', function (event, data) {
 });
 $(document).on('pagecreate', '#servicePage', function () {
         initPageVarsOnCreate('Service');
-});
-
-// #investPage
-$(document).on('pagebeforeshow', '#investPage', function (event, data) {
-        startBeforeShowVars(data);
-        initPageVarsOnShow('Invest');
-});
-$(document).on('pagecreate', '#investPage', function () {
-        initPageVarsOnCreate('Invest');
 });
 
 // #impressumPage
