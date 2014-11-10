@@ -704,12 +704,10 @@ function htmlClickEventHandlers(id, action) {
                                  document.getElementById("suchKiste2").value="Name / ISIN suchen";
                                  document.getElementById("suchKiste3").value="Name / ISIN suchen";
                                  document.getElementById("suchKiste4").value="Name / ISIN suchen";
-                                 document.getElementById("suchKiste5").value="Name / ISIN suchen";
                                  document.getElementById("suchKiste1").style.visibility="visible"; //macht Sichtbar wenn vorher versteckt
                                  document.getElementById("suchKiste2").style.visibility="visible";
                                  document.getElementById("suchKiste3").style.visibility="visible";
                                  document.getElementById("suchKiste4").style.visibility="visible";
-                                 document.getElementById("suchKiste5").style.visibility="visible";
                                  document.getElementById("headerSearchService").src="./images/icons/ic_action_search_headerx.png";  //macht X hinter Suchfeld
                                  document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_headerx.png";
                                  document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_headerx.png";
@@ -719,7 +717,6 @@ function htmlClickEventHandlers(id, action) {
                                  document.getElementById("suchKiste2").style.visibility="hidden";
                                  document.getElementById("suchKiste3").style.visibility="hidden";
                                  document.getElementById("suchKiste4").style.visibility="hidden";
-                                 document.getElementById("suchKiste5").style.visibility="hidden";
                                  document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";  //macht aus X wieder Lupe
                                  document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
                                  document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
