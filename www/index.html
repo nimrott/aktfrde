@@ -364,10 +364,9 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                                var value2 = window.localStorage.getItem("key2");
                                document.getElementById('username').value=value1;  //Fuellt das Formular aus damit die Daten beim Seitenbesuch drin stehen
                                document.getElementById('password').value=value2;
-                               $("#serviceStatus").val("off").flipswitch("refresh"); //Stellt Switch auf AN
-                               //document.getElementById('submitbtn').click(); return false;            Altenative, wenn im Formular auch ein Button gesetzt wird
                                SetLoader();
                                document.getElementById('loginForm').submit();
+                               $("#serviceStatus").val("off").flipswitch("refresh"); //Stellt Switch auf AN
                        } else {}
                    } else {}
 
