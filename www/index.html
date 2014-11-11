@@ -314,9 +314,6 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                 </div><!-- /page -->
 <script>
          function firstStart() {
-                 if (document.getElementsByName("mainframe")[0].src == "http://aktienfreunde.net") {
-                    alert("jes");
-                 } else {};
                  hideLoader();
                  GetPass();
                  fixiFrame();
@@ -338,9 +335,9 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                  window.localStorage.setItem("key1", document.getElementById('username').value);
                  window.localStorage.setItem("key2", document.getElementById('password').value);
                  window.localStorage.setItem("key3", "1");
-//                 loadingFirst = '0';                  //Wird sicherheitshalber nochmal auf 0 gesetzt damit denifinit ein Loginversuch erzwungen wird
-//                 GetPass();                           //einloggen findet statt und SetLoader wird gestellt
-//                 window.location.href = "#indexPage"  //Es wird auf die Seite geschaltet damit dr User sieht wenn seine Eingaben falsch waren
+                 loadingFirst = '0';                  //Wird sicherheitshalber nochmal auf 0 gesetzt damit denifinit ein Loginversuch erzwungen wird
+                 GetPass();                           //einloggen findet statt und SetLoader wird gestellt
+                 window.location.href = "#indexPage"  //Es wird auf die Seite geschaltet damit dr User sieht wenn seine Eingaben falsch waren
                  alert('Logindaten gespeichert!');    //Die Meldung muss dazu um die Bestaetigung zu bekommen
                  }
          function GetPass() {
@@ -365,6 +362,7 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                   window.localStorage.setItem("key3", "0");
                   document.getElementById("username").value="Benutzername";
                   document.getElementById("password").value="Password";
+                  changeFramelogoff()
                   }
          function changeFramelogin(){
                   SetLoader();
