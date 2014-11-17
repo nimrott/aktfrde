@@ -428,7 +428,7 @@ function SetLoader() {
 function changeFrame0(){
          SetLoader();       //setzte Ladebild um Iframe zu verstecken bis fertiggeladen
          window.location.href = "#indexPage";        //springt zum Index
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/list/?theme=Generic+jQuery+Mobile+Theme+1.2.0&passkey=93948456754418bf9a2e55";  //laedt neue seite in iframe
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/list/?afForceMobile=true&afDisableMobileControls=true";  //laedt neue seite in iframe
          }
 function changeFrame1(){
          SetLoader();                                 //setzte Ladebild um Iframe zu verstecken bis fertiggeladen
