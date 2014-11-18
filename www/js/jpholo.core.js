@@ -707,8 +707,7 @@ function htmlClickEventHandlers(id, action) {
                 function () {
                  if (document.getElementById("suchKiste1").style.visibility == "hidden") {
                                  if (screen.width < "750") {
-                                         alert(document.getElementsByName("mainframe")[0].src);
-
+                                         GoToSearch();
                                  } else {
                                  document.getElementById("suchKiste1").value="Name / ISIN suchen"; //stellt beim Sichtbarmachen wieder Standard her
                                  document.getElementById("suchKiste2").value="Name / ISIN suchen";
