@@ -458,7 +458,7 @@ function changeFrame6(){
 function changeFrame7(){
          SetLoader();
          window.location.href = "#indexPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/showCashType/?afForceMobile=true&afDisableMobileControls=true";
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/showCashType";
          }
 function changeFrame8(){
          SetLoader();
@@ -472,7 +472,7 @@ function changeFrame9(){
 function changeFrame10(){
          SetLoader();
          window.location.href = "#indexPage";
-         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/account/index/?afForceMobile=true&afDisableMobileControls=true";
+         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/account/index";
          }
 function changeFrame11(){
          //kein SeitLoader weil keine Webpage
