@@ -990,13 +990,14 @@ function sendRegID() {
      var value5 = window.localStorage.getItem("key5");
      //if value 5 gleich 1 besteht wunsch
      if (value5 == '1') {
-     if (pushRegID != 'leer') {
-     document.getElementById('inforegid').innerHTML = pushRegID;  //zeigt das ganze in den Einstellungen an
-     //hier kommt der Code zum senden an Datenbank hin
-     alert('sendRegID' + value5);
-     //liest BellUser aus und wenn ungleich leer schickt zur RegId auch username
-     window.localStorage.setItem("key4", "1"); //Vermerkt dass die RegID empfangen und gesendet wurde
-     } else {}
+         if (pushRegID == 'leer') {
+         //KEINE AKTION WEIL RegID nicht empfangen wurde
+         } else {
+         document.getElementById('inforegid').innerHTML = pushRegID;  //zeigt das ganze in den Einstellungen an
+         //hier kommt der Code zum senden an Datenbank hin
+         //liest BellUser aus und wenn ungleich leer schickt zur RegId auch username
+         window.localStorage.setItem("key4", "1"); //Vermerkt dass die RegID empfangen und gesendet wurde zurzeit noch nicht benutzt
+         }
      } else {
      alert('sendRegID' + value5); //Kein Wunsch zu senden
      }
@@ -1004,7 +1005,6 @@ function sendRegID() {
 
 function deleteRegID() {
  //Sendet loeschen Befehl an Server
- alert('deleteRegID');
  //
 }
 
@@ -1028,7 +1028,6 @@ function ClosingBellFirstLoad() {
 //trigger muss auf aus geschaltet werden
 //wenn nein, oder nicht existent muss value 5 auf 1 gesetzt werden
 //danach muss trigger auf ein geschaltet werden
-         alert('ClosingBellFirstLoad');
          var value5 = window.localStorage.getItem("key5");
          if (value5 == '0') {
          $("#bellStatus").val("on").flipswitch("refresh"); //Stellt Switch auf OFF
