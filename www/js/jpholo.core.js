@@ -5,8 +5,7 @@
 var loadingFirst = '0';
 var pushNotification;
 var pushRegID = 'leer';
-
-
+var BellUser = 'leer';
 
 // global settings
 window.androidPrefsLib = "jpHoloSharedPreferences";
@@ -985,8 +984,8 @@ $(document).on('pagecreate', '#datenschutzPage', function () {
 
 //verarbeitet die bei der GCMRegistrierung erhaltene RegID fuer PushServices und leitet diese weiter an eigenen MessageServer
 function sendRegID() {
-         document.getElementById('inforegid').innerHTML = pushRegID;  //zeigt das ganze in den Einstellungen an
-         //hier kommt der Code zum senden an Datenbank hin
+          //hier kommt der Code zum senden an Datenbank hin
+          //ist einmal in Variable pushRegID und user in BellUser
          //liest BellUser aus und wenn ungleich leer schickt zur RegId auch username
 }
 

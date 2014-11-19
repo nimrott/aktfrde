@@ -328,10 +328,7 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                                          <div class="ui-block-a"><input type="button" id="button1" value="Login" onclick="LogIn(); return false;"/></div>
                                          <div class="ui-block-b"><input type="button" id="logoff" value="Abmelden" onClick="LogOut(); return false;"/></div>
                                </fieldset>
-                                <br><br>
-
-                                <div id="inforegid"></div>
-
+                              <br><br>
                                </form>
                         </div><!-- /content -->
 
@@ -378,6 +375,7 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                                var value2 = window.localStorage.getItem("key2");
                                document.getElementById('username').value=value1;  //Fuellt das Formular aus damit die Daten beim Seitenbesuch drin stehen
                                document.getElementById('password').value=value2;
+                               BellUser = value1; //Fuellt BellUser damit der RegID auch ein Username beigefuegt wird
                                SetLoader();
                                document.getElementById('loginForm').submit();
                                $("#serviceStatus").val("off").flipswitch("refresh"); //Stellt Switch auf AN
@@ -392,6 +390,9 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                          window.localStorage.setItem("key3", "0");
                          document.getElementById("username").value="Benutzername";
                          document.getElementById("password").value="Password";
+                         BellUser = 'leer'; //Prozesse zum loeschen des Usernames fuer ClosingBell
+                         deleteRegID();
+                         triggerClosingBellButton();
                          } else {};
                   }
          function LogOut(){
