@@ -236,7 +236,6 @@ function onDeviceReady() {
         // prelude app images for faster GUI
         startPreLoadImages();
         //Get PushIDs from MessageServer
-        ClosingBellFirstLoad(); //Laedt erst mal den BellButton
         try{
         pushNotification = window.plugins.pushNotification;
         //$("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
@@ -351,7 +350,7 @@ function startPreLoadImages() {
                                                 // here is where you might want to send it the regID for later use.
                                                 console.log("regID = " + e.regid);
                                                 pushRegID = e.regid;
-                                                sendRegID(); //Funktion zum senden der ID an den PushServer ist ganz unten hier
+                                                ClosingBellFirstLoad(); //Laedt erst mal den BellButton //Funktion zum senden der ID an den PushServer ist ganz unten hier
                                         }
                     break;
 
@@ -986,11 +985,9 @@ $(document).on('pagecreate', '#datenschutzPage', function () {
 
 //verarbeitet die bei der GCMRegistrierung erhaltene RegID fuer PushServices und leitet diese weiter an eigenen MessageServer
 function sendRegID() {
-     var value5 = window.localStorage.getItem("key5");
      //if value 5 gleich 1 besteht wunsch
      if (value5 == '1') {
          document.getElementById('inforegid').innerHTML = pushRegID;  //zeigt das ganze in den Einstellungen an
-         alert(pushRegID);
          //hier kommt der Code zum senden an Datenbank hin
          //liest BellUser aus und wenn ungleich leer schickt zur RegId auch username
          window.localStorage.setItem("key4", "1"); //Vermerkt dass die RegID empfangen und gesendet wurde zurzeit noch nicht benutzt
@@ -1029,7 +1026,9 @@ function ClosingBellFirstLoad() {
          $("#bellStatus").val("on").flipswitch("refresh"); //Stellt Switch auf OFF
          } else {
          window.localStorage.setItem("key5", "1");
+         value5 = '1';
          $("#bellStatus").val("off").flipswitch("refresh"); //Stellt Switch auf AN
+         sendRegID();
          }
 }
 
