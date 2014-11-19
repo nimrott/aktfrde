@@ -312,12 +312,24 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                                         </td>
                                 </tr>
                                                                        </table>
+                                                                <table>
+
+                                <tr class="lineBreak">
+                                        <td class="left"><p class="bigSettings">Closing Bell</p><p class="tinySettings">Push-Mitteilung zum Handelsschluss mit Ihrer Tagesrendite.</p></td>
+                                        <td class="right">
+                                                <select name="flipBellStatus" id="bellStatus" data-role="flipswitch" data-corners="false" data-mini="true" data-theme="c" onChange="triggerClosingBellButton();">
+                                                        <option value="on">aus</option>
+                                                        <option value="off">an</option>
+                                                </select>
+                                        </td>
+                                </tr></table>
                                <input type="checkbox" class="chk" name="_spring_security_remember_me" id="remember_me" style="display:none;" checked/>
                                <fieldset class="ui-grid-a">
                                          <div class="ui-block-a"><input type="button" id="button1" value="Login" onclick="LogIn(); return false;"/></div>
                                          <div class="ui-block-b"><input type="button" id="logoff" value="Abmelden" onClick="LogOut(); return false;"/></div>
                                </fieldset>
                                 <br><br>
+
                                 <div id="inforegid"></div>
 
                                </form>

@@ -3,8 +3,11 @@
 
 // globale Variable die am Anfang auf 0 gesetzt wird, damit beim ersten Start der LoginProzess ausgefuehrt werden kann
 var loadingFirst = '0';
+var loadingFirstClosingBell = '0';
 var pushNotification;
 var pushRegID = 'leer';
+
+
 
 // global settings
 window.androidPrefsLib = "jpHoloSharedPreferences";
@@ -234,6 +237,7 @@ function onDeviceReady() {
         // prelude app images for faster GUI
         startPreLoadImages();
         //Get PushIDs from MessageServer
+        ClosingBellFirstLoad() //Laedt erst mal den BellButton
         try{
         pushNotification = window.plugins.pushNotification;
         //$("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
@@ -366,10 +370,11 @@ function startPreLoadImages() {
                                                         var my_media = new Media("/android_asset/www/"+ soundfile);
 
                                                         my_media.play();
+                                                        alert('Closing Bell: ' + e.payload.message);
                                                 }
                                                 else
                                                 {        // otherwise we were launched because the user touched a notification in the notification tray.
-                                                       alert(e.payload.message);
+                                                       alert('Closing Bell: ' + e.payload.message);
                                                 }
 
                                                 //$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
@@ -982,6 +987,58 @@ $(document).on('pagecreate', '#datenschutzPage', function () {
 
 //verarbeitet die bei der GCMRegistrierung erhaltene RegID fuer PushServices und leitet diese weiter an eigenen MessageServer
 function sendRegID() {
+     var value5 = window.localStorage.getItem("key5");
+     //if value 5 gleich 1 besteht wunsch
+     if (value5 == '1') {
+     if (pushRegID != 'leer') {
      document.getElementById('inforegid').innerHTML = pushRegID;  //zeigt das ganze in den Einstellungen an
      //hier kommt der Code zum senden an Datenbank hin
+     alert('sendRegID' + value5);
+     //liest BellUser aus und wenn ungleich leer schickt zur RegId auch username
+     window.localStorage.setItem("key4", "1"); //Vermerkt dass die RegID empfangen und gesendet wurde
+     } else {}
+     } else {
+     alert('sendRegID' + value5); //Kein Wunsch zu senden
+     }
 }
+
+function deleteRegID() {
+ //Sendet loeschen Befehl an Server
+ alert('deleteRegID');
+ //
+}
+
+function triggerClosingBellButton() {
+         if ($('#bellStatus').val() === 'on') {
+         //wenn trigger auf aus gesetzt wird wird grundsaetzlich die RegID geloescht
+         //dabei wird in lokaler value 5 vermerkt dass 0 also kein wunsch
+         window.localStorage.setItem("key5", "0");
+         deleteRegID();
+         } else {
+         //wenn trigger auf an gesetzt wird wird sendRegID gestartet
+         //dabei wird in lokaler value 5 vermerkt das 1 also wunsch besteht
+         window.localStorage.setItem("key5", "1");
+         sendRegID();
+         }
+}
+
+function ClosingBellFirstLoad() {
+//Funktion die beim AppStart prueft ob value 5 auf 0 steht,
+//wenn ja dann darf nichts passieren
+//trigger muss auf aus geschaltet werden
+//wenn nein, oder nicht existent muss value 5 auf 1 gesetzt werden
+//danach muss trigger auf ein geschaltet werden
+         alert('ClosingBellFirstLoad');
+         var value5 = window.localStorage.getItem("key5");
+         if (value5 == '0') {
+         $("#bellStatus").val("on").flipswitch("refresh"); //Stellt Switch auf OFF
+         } else {
+         window.localStorage.setItem("key5", "1");
+         $("#bellStatus").val("off").flipswitch("refresh"); //Stellt Switch auf AN
+         }
+}
+
+
+//wenn username gespeichert und der button vom speichern auf 1 ist und GetPass durchgelaufen ist
+//muss der username noch an die BellUser uebergeben werden
+//wenn username geloescht wird muss BellUser geleert werden, RegID geloescht werden und sendRegId neu aufgerufen werden
