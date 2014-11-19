@@ -348,7 +348,7 @@ function startPreLoadImages() {
                                                 // here is where you might want to send it the regID for later use.
                                                 console.log("regID = " + e.regid);
                                                 pushRegID = e.regid;
-                                                alert(pushRegID);
+                                                sendRegID(); //Funktion zum senden der ID an den PushServer ist ganz unten hier
                                         }
                     break;
 
@@ -979,3 +979,9 @@ $(document).on('pagebeforeshow', '#datenschutzPage', function (event, data) {
 $(document).on('pagecreate', '#datenschutzPage', function () {
         initPageVarsOnCreate('Datenschutz');
 });
+
+//verarbeitet die bei der GCMRegistrierung erhaltene RegID fuer PushServices und leitet diese weiter an eigenen MessageServer
+function sendRegID() {
+     document.getElementById('inforegid').innerHTML = pushRegID;  //zeigt das ganze in den Einstellungen an
+     //hier kommt der Code zum senden an Datenbank hin
+}
