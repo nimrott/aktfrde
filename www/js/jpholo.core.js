@@ -369,7 +369,7 @@ function startPreLoadImages() {
                                                 }
                                                 else
                                                 {        // otherwise we were launched because the user touched a notification in the notification tray.
-
+                                                       alert(e.payload.message);
                                                 }
 
                                                 //$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
