@@ -985,15 +985,9 @@ $(document).on('pagecreate', '#datenschutzPage', function () {
 
 //verarbeitet die bei der GCMRegistrierung erhaltene RegID fuer PushServices und leitet diese weiter an eigenen MessageServer
 function sendRegID() {
-     //if value 5 gleich 1 besteht wunsch
-     if (value5 == '1') {
          document.getElementById('inforegid').innerHTML = pushRegID;  //zeigt das ganze in den Einstellungen an
          //hier kommt der Code zum senden an Datenbank hin
          //liest BellUser aus und wenn ungleich leer schickt zur RegId auch username
-         window.localStorage.setItem("key4", "1"); //Vermerkt dass die RegID empfangen und gesendet wurde zurzeit noch nicht benutzt
-     } else {
-     alert('sendRegID' + value5); //Kein Wunsch zu senden
-     }
 }
 
 function deleteRegID() {
