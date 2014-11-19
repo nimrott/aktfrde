@@ -33,6 +33,7 @@
                 <!-- Other frameworks -->
                 <script type="text/javascript" src="./js/fastclick.js"></script><!-- for speeding op tap events, load this AFTER jQuery Mobile -->
                 <script type="text/javascript" src="./js/i18next-1.7.3.min.js"></script><!-- for multi language -->
+                <script type="text/javascript" src="./js/PushNotification.js"></script><!-- for Push Messages -->
 
                 <!-- Application -->
                 <!-- Set document, used in jpholo.core.js -->
@@ -316,7 +317,8 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                                          <div class="ui-block-a"><input type="button" id="button1" value="Login" onclick="LogIn(); return false;"/></div>
                                          <div class="ui-block-b"><input type="button" id="logoff" value="Abmelden" onClick="LogOut(); return false;"/></div>
                                </fieldset>
-
+                                <br><br>
+                                <div id="inforegid"></div>
 
                                </form>
                         </div><!-- /content -->
@@ -324,9 +326,10 @@ Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerk
                 </div><!-- /page -->
 <script>
          function firstStart() {
+                 document.getElementById('inforegid').innerHTML = pushRegID;
                  hideLoader();
-                 GetPass();
                  fixiFrame();
+                 GetPass();
                  }
          function fixiFrame () {
                  if ((android) && (androidVersion > 3)) {
