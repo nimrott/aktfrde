@@ -236,7 +236,7 @@ function onDeviceReady() {
         // prelude app images for faster GUI
         startPreLoadImages();
         //Get PushIDs from MessageServer
-        ClosingBellFirstLoad() //Laedt erst mal den BellButton
+        ClosingBellFirstLoad(); //Laedt erst mal den BellButton
         try{
         pushNotification = window.plugins.pushNotification;
         //$("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
