@@ -1,27 +1,13 @@
 <!DOCTYPE html>
 <html>
         <head>
-                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                <meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width" /><!-- Do not change this! -->
 
-                <!-- Stylesheets -->
-                <!-- jQuery and jQuery Mobile -->
-                <link rel="stylesheet" type="text/css" href="./themes/AndroidHolo.min.css" /><!-- ThemeRoller theme -->
-                <link rel="stylesheet" type="text/css" href="./themes/jquery.mobile.icons-1.4.2.min.css" />
-                <link rel="stylesheet" type="text/css" href="./themes/jquery.mobile.structure-1.4.2.min.css" />
-
-                <!-- jpHolo theme -->
-                <link rel="stylesheet" type="text/css" href="./themes/jpholo.css" />
-                <link rel="stylesheet" type="text/css" href="./themes/jpholo.splitview.css" />
-                <link rel="stylesheet" type="text/css" href="./themes/jpholo.tablet.css" id="sizeStylesheet" />
 
                 <!-- JavaScript -->
 
                 <script type="text/javascript" src="cordova.js"></script>
                 <script type="text/javascript" charset="utf-8" src="phonegap-3.6.3.js"></script>
-                <!-- Cordova PhoneGap --><!-- exclude the scripts below if you are not deploying with PhoneGap -->
-                <script type="text/javascript" src="./backgroundService-3.1.0.js"></script>
-                <script type="text/javascript" src="./cordova_custom_plugins.js"></script>
+
 
                 <!-- jQuery -->
                 <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
@@ -30,66 +16,18 @@
                 <script type="text/javascript" src="./js/jquery.mobile.settings.js"></script><!-- this must be loaded before jQuery Mobile -->
                 <script type="text/javascript" src="./js/jquery.mobile-1.4.2.min.js"></script>
 
-                <!-- Other frameworks -->
-                <script type="text/javascript" src="./js/fastclick.js"></script><!-- for speeding op tap events, load this AFTER jQuery Mobile -->
-                <script type="text/javascript" src="./js/i18next-1.7.3.min.js"></script><!-- for multi language -->
+
                 <script type="text/javascript" src="./js/PushNotification.js"></script><!-- for PushPlugin Example -->
 
                 <!-- Application -->
-                <!-- Set document, used in jpholo.core.js -->
-                <script type="text/javascript">
-                        window.indexFile = "index.html";
-                        window.phonegapExcluded = true; // set this value to either true or false, depending on if you load the Cordova PhoneGap scripts.
-                </script>
+
                 <!-- jpHolo core
                 <script type="text/javascript" src="./js/jpholo.core.js"></script>
                 <script type="text/javascript" src="./js/jpholo.core.services.js"></script>  -->
                 <!-- your scripts -->
 
                 <title>Aktienfreunde App</title>
-    <style type="text/css">
-        html, body { margin: 0; padding: 0; height: 100%; }
-        iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            border: none; padding-top: 50px;
-            box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;
-        }
-        body {
-                 overflow:hidden;
-                 }
-#loader1 {
-    position:absolute;
-    left:45%;
-    top:45%;
-    border-radius:0px;
-    padding:0px;
-    border:0px solid #777777;
-    box-shadow:0px 0px 0px #777777;
-}
-input.suche[type='text'] {
-    /* You can set width to whatever you like */
-    width: 150px;
-    right: 150px;
-    top:10px;
-    font-family: "Roboto", "Droid Sans", sans-serif;
-    font-size: 16px;
-    margin: 0;
-    padding: 8px 8px 6px 8px;
-    position: fixed;
-    display: block;
-    outline: none;
-    border: none;
-    color: #ffffff;
-    background: bottom left linear-gradient(#ffffff, #ffffff) no-repeat, bottom center linear-gradient(#ffffff, #ffffff) repeat-x, bottom right linear-gradient(#ffffff, #ffffff) no-repeat;
-    background-size: 1px 6px, 1px 1px, 1px 6px;
-}
-input.suche[type='text']:hover, input.suche[type='text']:focus {
-    background: bottom left linear-gradient(#ffffff, #ffffff) no-repeat, bottom center linear-gradient(#ffffff, #ffffff) repeat-x, bottom right linear-gradient(#ffffff, #ffffff) no-repeat;
-    background-size: 1px 6px, 1px 1px, 1px 6px;
-
-}
-</style>
+    
         </head>
         <body height:100%>
                 <script type="text/javascript">
