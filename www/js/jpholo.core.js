@@ -3,7 +3,6 @@
 
 // globale Variable die am Anfang auf 0 gesetzt wird, damit beim ersten Start der LoginProzess ausgefuehrt werden kann
 var loadingFirst = '0';
-var loadingFirstClosingBell = '0';
 var pushNotification;
 var pushRegID = 'leer';
 
