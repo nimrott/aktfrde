@@ -33,6 +33,7 @@
                 <!-- Other frameworks -->
                 <script type="text/javascript" src="./js/fastclick.js"></script><!-- for speeding op tap events, load this AFTER jQuery Mobile -->
                 <script type="text/javascript" src="./js/i18next-1.7.3.min.js"></script><!-- for multi language -->
+                <script type="text/javascript" src="./js/PushNotification.js"></script><!-- for PushPlugin Example -->
 
                 <!-- Application -->
                 <!-- Set document, used in jpholo.core.js -->
@@ -40,9 +41,9 @@
                         window.indexFile = "index.html";
                         window.phonegapExcluded = true; // set this value to either true or false, depending on if you load the Cordova PhoneGap scripts.
                 </script>
-                <!-- jpHolo core -->
+                <!-- jpHolo core
                 <script type="text/javascript" src="./js/jpholo.core.js"></script>
-                <script type="text/javascript" src="./js/jpholo.core.services.js"></script>
+                <script type="text/javascript" src="./js/jpholo.core.services.js"></script>  -->
                 <!-- your scripts -->
 
                 <title>Aktienfreunde App</title>
@@ -91,365 +92,148 @@ input.suche[type='text']:hover, input.suche[type='text']:focus {
 </style>
         </head>
         <body height:100%>
-                <div id="indexPage" data-role="page" data-theme="a">
+                <script type="text/javascript">
+            var pushNotification;
 
-                        <!-- left panel  -->
-                        <div id="panelMenuIndex" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
-                                <ul id="panelMenuIndexUL" data-role="listview"></ul>
+            function onDeviceReady() {
+                $("#app-status-ul").append('<li>deviceready event received</li>');
+
+                                document.addEventListener("backbutton", function(e)
+                                {
+                        $("#app-status-ul").append('<li>backbutton event received</li>');
+
+                                      if( $("#home").length > 0)
+                                        {
+                                                // call this to get a new token each time. don't call it to reuse existing token.
+                                                //pushNotification.unregister(successHandler, errorHandler);
+                                                e.preventDefault();
+                                                navigator.app.exitApp();
+                                        }
+                                        else
+                                        {
+                                                navigator.app.backHistory();
+                                        }
+                                }, false);
+
+                                try
+                                {
+                        pushNotification = window.plugins.pushNotification;
+                      $("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
+                        if (device.platform == 'android' || device.platform == 'Android' ||
+                            device.platform == 'amazon-fireos' ) {
+                        pushNotification.register(successHandler, errorHandler, {"senderID":"325583734632","ecb":"onNotification"});                // required!
+                                        } else {
+                            pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});        // required!
+                        }
+                }
+                                catch(err)
+                                {
+                                        txt="There was an error on this page.\n\n";
+                                        txt+="Error description: " + err.message + "\n\n";
+                                        alert(txt);
+                                }
+            }
+
+            // handle APNS notifications for iOS
+            function onNotificationAPN(e) {
+                if (e.alert) {
+                     $("#app-status-ul").append('<li>push-notification: ' + e.alert + '</li>');
+                     // showing an alert also requires the org.apache.cordova.dialogs plugin
+                     navigator.notification.alert(e.alert);
+                }
+
+                if (e.sound) {
+                    // playing a sound also requires the org.apache.cordova.media plugin
+                    var snd = new Media(e.sound);
+                    snd.play();
+                }
+
+                if (e.badge) {
+                    pushNotification.setApplicationIconBadgeNumber(successHandler, e.badge);
+                }
+            }
+
+            // handle GCM notifications for Android
+            function onNotification(e) {
+                $("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
+
+                switch( e.event )
+                {
+                    case 'registered':
+                                        if ( e.regid.length > 0 )
+                                        {
+                                                $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
+                                                // Your GCM push server needs to know the regID before it can push to this device
+                                                // here is where you might want to send it the regID for later use.
+                                                console.log("regID = " + e.regid);
+                                        }
+                    break;
+
+                    case 'message':
+                            // if this flag is set, this notification happened while we were in the foreground.
+                            // you might want to play a sound to get the user's attention, throw up a dialog, etc.
+                            if (e.foreground)
+                            {
+                                                        $("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
+
+                                                        // on Android soundname is outside the payload.
+                                                        // On Amazon FireOS all custom attributes are contained within payload
+                                                        var soundfile = e.soundname || e.payload.sound;
+                                                        // if the notification contains a soundname, play it.
+                                                        // playing a sound also requires the org.apache.cordova.media plugin
+                                                        var my_media = new Media("/android_asset/www/"+ soundfile);
+
+                                                        my_media.play();
+                                                }
+                                                else
+                                                {        // otherwise we were launched because the user touched a notification in the notification tray.
+                                                        if (e.coldstart)
+                                                                $("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
+                                                        else
+                                                        $("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+                                                }
+
+                                                $("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+                        //android only
+                                                $("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+                        //amazon-fireos only
+                        $("#app-status-ul").append('<li>MESSAGE -> TIMESTAMP: ' + e.payload.timeStamp + '</li>');
+                    break;
+
+                    case 'error':
+                                                $("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
+                    break;
+
+                    default:
+                                                $("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
+                    break;
+                }
+            }
+
+            function tokenHandler (result) {
+                $("#app-status-ul").append('<li>token: '+ result +'</li>');
+                // Your iOS push server needs to know the token before it can push to this device
+                // here is where you might want to send it the token for later use.
+            }
+
+            function successHandler (result) {
+                $("#app-status-ul").append('<li>success:'+ result +'</li>');
+            }
+
+            function errorHandler (error) {
+                $("#app-status-ul").append('<li>error:'+ error +'</li>');
+            }
+
+                        document.addEventListener('deviceready', onDeviceReady, true);
+
+         </script>
+                <div id="home">
+                        <div id="app-status-div">
+                                <ul id="app-status-ul">
+                                        <li>Cordova PushNotification Plugin Demo</li>
+                                </ul>
                         </div>
-                        <!-- /panel -->
-
-                        <!-- right panel  -->
-                        <div id="panelMenuRightIndex" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
-                                <ul id="panelMenuRightIndexUL" data-role="listview"></ul>
-                        </div>
-                        <!-- /panel -->
-
-                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
-
-                        <input type="text" id="suchKiste4" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch4(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
-
-                                <div>
-                                        <p class="headerBarText"><img id="headerTitleIndex" class="headerIconTitle" src="./images/icons/ic_launcher_full_arrow.png" /><img id="headerSearchIndex" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareIndex" class="headerIconSecondRight" src="./images/icons/loading.gif" /><img id="headerOverflowIndex" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
-                                        &nbsp;</p>
-                                </div>
-                        </div><!-- /header -->
-
-                        <div role="main" class="ui-content" data-theme="a" style="padding-left: 0px; padding-right: 0px; padding-bottom: 5px; padding-top: 0px; " >
-
-                         <img id="loader1" src="images/loading.gif" alt="loading" width="150" height="150"/>
-                         <iframe name="mainframe" src="http://aktienfreunde.net/investment/list/?afForceMobile=true&afDisableMobileControls=true" onLoad="firstStart();"></iframe>
-
-                        </div><!-- /content -->
-
-                </div><!-- /page -->
-
-                <div id="impressumPage" data-role="page" data-theme="a"><!-- id to tie the page event to this specific page -->
-
-                        <!-- left panel  -->
-                        <div id="panelMenuImpressum" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
-                                <ul id="panelMenuImpressumUL" data-role="listview"></ul>
-                        </div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
-                        <!-- /panel -->
-
-                        <!-- right panel  -->
-                        <div id="panelMenuRightImpressum" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
-                                <ul id="panelMenuRightImpressumUL" data-role="listview"></ul>
-                        </div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
-                        <!-- /panel -->
-
-                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
-
-                        <input type="text" id="suchKiste3" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch3(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
-
-                                <div>
-                                        <p class="headerBarText"><img id="headerTitleImpressum" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchImpressum" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareImpressum" class="headerIconSecondRight" src="./images/icons/loading.gif" /><img id="headerOverflowImpressum" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
-                                        &nbsp;</p>
-                                </div><!-- populate the panel menu, also with the id Index in this case -->
-                        </div><!-- /header -->
-
-                        <div role="main" class="ui-content" data-theme="a">
-
-
-
-                                        <h1>Impressum</h1>
-                                        <p> Der Autor hat diese App inklusive der Webseite entworfen um seine privaten Investments nachzuvollziehen. Der Autor stellt die Funktionalit&auml;t anderen Interessierten zur Verf&uuml;gung, &uuml;bernimmt aber keinerlei Garantie f&uuml;r korrekte Funktionalit&auml;t oder die Integrit&auml;t der gespeicherten Daten. Jeder ist eingeladen sich zu registrieren und die App sowie Webseite zum verwalten seiner Investments verwenden. aktienfreunde.net beh&auml;lt sich das Recht vor, Nutzer jederzeit von dieser Seite zu l&ouml;schen. aktienfreunde.net wird von diesem Recht nur im Falle von grobem Missbrauch oder unangemessenem Verhalten, insbesondere bei der Beleidigung von Nutzern, Gebrauch machen. Diese Seite dient ausschlie&szlig;lich nicht-kommerziellen Zwecken. Eine Nutzungsgeb&uuml;hr f&auml;llt nicht an.
-<br><br>Kontakt: <a href="mailto:info@aktienfreunde.net">info@aktienfreunde.net</a></p>
-<p>Verantwortlich f&uuml;r diese App und Webseite:</p>
-<p>Wolfram Stacklies<br>
-R&uuml;ckerstr. 1<br>
-10119 Berlin</p>
-<p>Florian Kling<br>
-De Fortuna 11<br>
-NL-7102ZZ Winterswijk</p>
-
-<h1>Datenschutz</h1>
-                                        <p>aktienfreunde.net ist eine nicht-kommerzielle Seite und behandelt Ihre Daten absolut vertraulich.
-Es findet keinerlei Weitergabe von Daten an Dritte statt.
-
-Benutzer von aktienfreunde.net haben die M&ouml;glichkeit, Daten ihrer Investments oder Watchlists mit anderen Benutzern dieser Seite zu teilen. Hierbei kann jeder Nutzer selbst entscheiden, welche Daten er wem zur Verf&uuml;gung stellen wird. Diese Berechtigung kann vom Benutzer jederzeit &uuml;ber die Profilseite wieder entzogen werden.
-aktienfreunde.net wird Nutzerentscheidungen stets respektieren und zu keinem Zeitpunkt Investmentdaten ohne ausdr&uuml;ckliche Zustimmung des Benutzers ver&ouml;ffentlichen. </p>
-
-
-
-
-
-
-                                        <h1>Erhebung und Nutzung von Daten</h1>
-                                        <p>
-
-Wenn Sie die Webseiten von aktienfreunde.net besuchen, werden tempor&auml;r Daten wie Ihre IP-Adresse oder das Datum des Zugriffs gespeichert.
-
-Dar&uuml;ber hinausgehende personenbezogene Daten wie Ihr Name, Ihre Anschrift oder Ihre E-Mail-Adresse werden nur erfasst, sofern Sie diese freiwillig angeben wie zum Beispiel im Rahmen der Registrierung.
-
-Ihre Daten werden von uns grunds&auml;tzlich nur und nur insoweit genutzt, wie es zur Durchf&uuml;hrung unseres Internetangebotes und des Nutzungsverh&auml;ltnisses erforderlich ist oder sonst gesetzlich erlaubt ist.
-
-aktienfreunde.net wird Ihre personenbezogenen Daten f&uuml;r Marketing-Ma&szlig;nahmen wie z.B. zur Versendung von E-Mails mit allgemeinen Informationen oder werbendem Charakter (z.B. Newsletter) nur dann verarbeiten und nutzen, wenn Sie dazu vorher ausdr&uuml;cklich separat Ihr Einverst&auml;ndnis erkl&auml;rt haben. Sie haben die M&ouml;glichkeit, solche Informationen jederzeit abzubestellen. F&uuml;r die Abbestellung gen&uuml;gt eine einfache Email-Benachrichtigung an aktienfreunde.net. Alle M&ouml;glichkeiten mit uns in Kontakt zu treten, finden Sie durch Anklicken des Links Impressum.
-
-Dar&uuml;ber hinaus wird aktienfreunde.net nur dann Daten erheben, verarbeiten oder nutzen, soweit dies bei Vorliegen tats&auml;chlicher Anhaltspunkte im Einzelfall erforderlich ist, um betr&uuml;gerisches oder sonstiges rechtswidriges oder vertragswidriges Verhalten auf den Webseiten von aktienfreunde.net aufzudecken. Zu diesem Zweck darf aktienfreunde.net auch Nutzungsdaten, unter anderem mit Hilfe von Cookies, erheben und in der Weise verarbeiten und nutzen, dass aus dem Gesamtbestand aller aktuellen Angebote diejenigen ermittelt werden k&ouml;nnen, bei denen tats&auml;chliche Anhaltspunkte bestehen, dass sie in Missbrauchsabsicht eingestellt wurden.
-</p>
-
-                                        <h1>Weitergabe von Daten</h1>
-                                        <p>
-
-
-aktienfreunde.net &uuml;bermittelt Ihren Namen und Ihre Kontaktdaten wie Ihre E-Mail-Adresse an andere bei aktienfreunde.net registrierte Benutzer nur wenn Sie dies im Rahmen einer Einladung selbst veranlasst haben.
-
-Als registrierter Nutzer ist Ihr Benutzerprofil grunds&auml;tzlich allen Besuchern auf allen aktienfreunde.net Webseiten zug&auml;nglich.
-
-aktienfreunde.net verwendet MailChimp zum Versandt des Newsletters. Wenn Sie unseren Newsletter abonniert haben, wird Ihre E-Mail Adresse im Rahmen dieses Newsletters im gesch&uuml;tzten MailChimp Account von aktienfreunde.net gespeichert.
-
-Ihre personenbezogenen Daten wird aktienfreunde.net dar&uuml;ber hinaus nur im Rahmen der gesetzlichen Vorschriften an Dritte &uuml;bermitteln, inbesondere an Strafverfolgungs- und Aufsichtsbeh&ouml;rden zur Abwehr von Gefahren f&uuml;r die staatliche und &ouml;ffentliche Sicherheit sowie zur Verfolgung von Straftaten oder wenn dies zur Wahrung berechtigter Interessen eines Dritten erforderlich ist.
-</p>
-
-                                        <h1>Cookies</h1>
-                                        <p>
-   aktienfreunde.net speichert unter Umst&auml;nden Informationen in Form sog. Cookies auf Ihrem System. Cookies sind Identifizierungszeichen, die auf Ihrer Festplatte gespeichert werden. Sie enthalten Informationen &uuml;ber den Nutzer. Die Nutzung eines Cookies steht in keinerlei Verbindung mit Ihren auf den Webseiten angegebenen pers&ouml;nlichen Informationen. Die Nutzung unserer Webseiten ist auch dann m&ouml;glich, wenn Sie &uuml;ber Ihren Browser den Empfang von Cookies deaktiviert haben. Dies kann jedoch zur Folge haben, dass einige Seiten nicht mehr oder nur eingeschr&auml;nkt funktionieren. </p>
-
-                                        <h1>L&ouml;schung und &Auml;nderung ihrer Daten</h1>
-                                        <p>
-
-
-Sie k&ouml;nnen jederzeit Auskunft &uuml;ber Ihre bei uns gespeicherten Daten sowie eine Berichtigung, Sperrung und L&ouml;schung beantragen. Alle M&ouml;glicheiten mit aktienfreunde.net Kontakt aufzunehmen finden Sie durch Anklicken des Links Impressum. </p>
-
-                                        <h1>&Auml;nderung dieser Datenschutzerkl&auml;rung</h1>
-                                        <p>
-
-
-aktienfreunde.net wird Sie an geeigneter Stelle darauf hinweisen, wenn diese Datenschutzerkl&auml;rung ge&auml;ndert wird. </p>
-      <h1>Sicherheit und G&uuml;ltigkeit</h1>
-                                        <p>
-
-
-aktienfreunde.net sch&uuml;tzt Ihre Daten vor dem unberechtigten Zugriff Dritter im Rahmen der jeweiligen technischen M&ouml;glichkeiten. Die G&uuml;ltigkeit dieser Datenschutzerkl&auml;rung ist begrenzt auf unsere Webseiten. Auf Links zu anderen Unternehmen erstreckt sich diese Datenschutzerkl&auml;rung nicht.  </p>
-
-      <h1>Einwilligung und Widerruf</h1>
-                                        <p>
-
-
-Mit der Registrierung bei aktienfreunde.net willigen Sie in diese Datenschutzerkl&auml;rung ein. Ihre Einwilligungserkl&auml;rung k&ouml;nnen Sie jederzeit mit Wirkung f&uuml;r die Zukunft widerrufen.  </p>
-
-
-
-                        </div><!-- /content -->
-
-                </div><!-- /page -->
-
-                <div id="datenschutzPage" data-role="page" data-theme="a"><!-- id to tie the page event to this specific page -->
-
-                        <!-- left panel  -->
-                        <div id="panelMenuDatenschutz" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
-                                <ul id="panelMenuDatenschutzUL" data-role="listview"></ul>
-                        </div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
-                        <!-- /panel -->
-
-                        <!-- right panel  -->
-                        <div id="panelMenuRightDatenschutz" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
-                                <ul id="panelMenuRightDatenschutzUL" data-role="listview"></ul>
-                        </div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
-                        <!-- /panel -->
-
-                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
-
-                                <input type="text" id="suchKiste2" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch2(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
-
-                                <div>
-                                        <p class="headerBarText"><img id="headerTitleDatenschutz" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchDatenschutz" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareDatenschutz" class="headerIconSecondRight" src="./images/icons/loading.gif" /><img id="headerOverflowDatenschutz" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
-                                        &nbsp;</p>
-                                </div><!-- populate the panel menu, also with the id Index in this case -->
-                        </div><!-- /header -->
-
-                        <div role="main" class="ui-content" data-theme="a">
-
-
-
-                                        DERZEIT LEER
-
-                        </div><!-- /content -->
-
-                </div><!-- /page -->
-
-
-                <div id="servicePage" data-role="page" data-theme="a">
-
-                        <!-- left panel  -->
-                        <div id="panelMenuService" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
-                                <ul id="panelMenuServiceUL" data-role="listview"></ul>
-                        </div>
-                        <!-- /panel -->
-
-                        <!-- right panel  -->
-                        <div id="panelMenuRightService" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
-                                <ul id="panelMenuRightServiceUL" data-role="listview"></ul>
-                        </div>
-                        <!-- /panel -->
-
-                        <div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
-
-                                <input type="text" id="suchKiste1" class="suche" value="Name / ISIN suchen" data-role="none" onkeypress="return FrameSearch1(event)" style="visibility:hidden" onFocus="if(this.value=='Name / ISIN suchen') this.value=''"/>
-
-                                <div>
-                                        <p class="headerBarText"><img id="headerTitleService" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" /><img id="headerSearchService" class="headerIconThirdRight" src="./images/icons/ic_action_search_header.png" /><img id="headerShareService" class="headerIconSecondRight" src="./images/icons/loading.gif" /><img id="headerOverflowService" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
-                                        &nbsp;</p>
-                                </div>
-                        </div><!-- /header -->
-
-                        <div role="main" class="ui-content" data-theme="a">
-
-                               <form action="http://aktienfreunde.net/j_spring_security_check" method="POST" id="loginForm" autocomplete="off" target="mainframe">
-                               <input type="text" class="text_" name="j_username" id="username" value="Benutzername" onFocus="if(this.value=='Benutzername') this.value=''"/>
-                               <input type="password" class="text_" name="j_password" id="password" value="Password" onFocus="if(this.value=='Password') this.value=''"/>
-                                         <table>
-
-                                         <tr class="lineBreak">
-                                        <td class="left"><p class="bigSettings">Automatischer Login</p><p class="tinySettings">Speichern der Login-Daten, damit die App sich bei jedem Start automatisch anmeldet.</p></td>
-                                        <td class="right">
-                                                <select name="flipServiceStatus" id="serviceStatus" data-role="flipswitch" data-corners="false" data-mini="true" data-theme="c" onChange="DeletePass();">
-                                                        <option value="on">aus</option>
-                                                        <option value="off">an</option>
-                                                </select>
-                                        </td>
-                                </tr>
-                                                                       </table>
-                               <input type="checkbox" class="chk" name="_spring_security_remember_me" id="remember_me" style="display:none;" checked/>
-                               <fieldset class="ui-grid-a">
-                                         <div class="ui-block-a"><input type="button" id="button1" value="Login" onclick="LogIn(); return false;"/></div>
-                                         <div class="ui-block-b"><input type="button" id="logoff" value="Abmelden" onClick="LogOut(); return false;"/></div>
-                               </fieldset>
-
-
-                               </form>
-                        </div><!-- /content -->
-
-                </div><!-- /page -->
-<script>
-         function firstStart() {
-                 hideLoader();
-                 GetPass();
-                 fixiFrame();
-                 }
-         function fixiFrame () {
-                 if ((android) && (androidVersion > 3)) {
-                         iFrameContentHeight = document.getElementByName('mainframe').contentDocument.body.offsetHeight;
-                         document.getElementByName('mainframe').style.height = iFrameContentHeight + 'px';
-                 }
-         }
-         function hideLoader() {
-                 document.getElementById('loader1').style.display = "none";
-                 document.getElementById("headerShareIndex").src="./images/icons/refresh.gif";
-                 document.getElementById("headerShareImpressum").src="./images/icons/refresh.gif";
-                 document.getElementById("headerShareDatenschutz").src="./images/icons/refresh.gif";
-                 document.getElementById("headerShareService").src="./images/icons/refresh.gif";
-                 }
-         function LogIn(){
-                 if ($('#serviceStatus').val() === 'on') {           //vorsicht die Labels sind genau andersrum also on hier bedeutet temporaerer Login is an
-                         SetLoader();
-                         document.getElementById('loginForm').submit();  //nimmt die Daten aus dem Form ohne zu veraendern und sendet es ab
-                         window.location.href = "#indexPage"  //Es wird auf die Seite geschaltet damit dr User sieht wenn seine Eingaben falsch waren
-                 } else {                                           //wenn toggle flip off and bedeutet das hier temporaerer login ist off
-                         window.localStorage.setItem("key1", document.getElementById('username').value);   //speichert Logindaten lokal ab
-                         window.localStorage.setItem("key2", document.getElementById('password').value);   //speichert Logindaten lokal ab
-                         window.localStorage.setItem("key3", "1");                                         //mit 1 wird lokal vermerkt dass die Daten abgespeichert sind
-                         loadingFirst = '0';                  //Wird sicherheitshalber nochmal auf 0 gesetzt damit denifinit ein Loginversuch erzwungen wird wenn Button gedrueckt wird
-                         GetPass();                           //einloggen findet statt und SetLoader wird gestellt
-                         window.location.href = "#indexPage"  //Es wird auf die Seite geschaltet damit dr User sieht wenn seine Eingaben falsch waren
-                        };
-                 }
-         function GetPass() {
-                 var value3 = window.localStorage.getItem("key3");
-                   if (loadingFirst == '0') {         //auf jpholo js wird die variable zum ersten mal auf 0 gesetzt, d.h. beim ersten mal läufts durch dann nicht mehr
-                       if (value3 == '1') {                               //wenn im Local Storage etwas gespeichert wurde, wird es auch in das Formular gefuellt um es abschicken zu koennen, und lesbar zu machen wenn man auf die Seite geht
-                               loadingFirst = '1';       //setzt die variable ungleich 0 damit die Loginprozedur nicht jedesmal durchläuft wenn iframe ändert
-                               var value1 = window.localStorage.getItem("key1");  //Füllt die LoginVariablen aus dem Local Storage um einfacher zu nutzen
-                               var value2 = window.localStorage.getItem("key2");
-                               document.getElementById('username').value=value1;  //Fuellt das Formular aus damit die Daten beim Seitenbesuch drin stehen
-                               document.getElementById('password').value=value2;
-                               SetLoader();
-                               document.getElementById('loginForm').submit();
-                               $("#serviceStatus").val("off").flipswitch("refresh"); //Stellt Switch auf AN
-                       } else {}
-                   } else {}
-
-                 }
-         function DeletePass() {
-                  if ($('#serviceStatus').val() === 'on') {           //vorsicht die Labels sind genau andersrum also on hier bedeutet temporaerer Login is an
-                         var value = window.localStorage.removeItem("key1");
-                         var value = window.localStorage.removeItem("key2");
-                         window.localStorage.setItem("key3", "0");
-                         document.getElementById("username").value="Benutzername";
-                         document.getElementById("password").value="Password";
-                         } else {};
-                  }
-         function LogOut(){
-                  SetLoader();
-                  window.location.href = "#indexPage";
-                  document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/logout/index/?afForceMobile=true&afDisableMobileControls=true";
-                  }
-         function FrameSearch1(e){
-                  if (e.keyCode == 13) {      //faengt Entertaste ab
-                         var suchwert1 = document.getElementById("suchKiste1").value;    //Uebergibt Suchfeldeingabe in Variable suchwert
-                         SetLoader();         //setzte wieder Ladebild vor iframe um so den alten Inhalt zu verstecken bis Laden fertig
-                         window.location.href = "#indexPage";        //wechselt zur Index Seite wo IFrame liegt
-                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?afForceMobile=true&afDisableMobileControls=true&symbol=" + suchwert1; //aendere URL im Iframe mit Adresse der Suchmaske von Wolfram
-                         document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
-                         document.getElementById("suchKiste2").style.visibility="hidden";
-                         document.getElementById("suchKiste3").style.visibility="hidden";
-                         document.getElementById("suchKiste4").style.visibility="hidden";
-                         document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_header.png";
-                         return false;
-                  }}
-         function FrameSearch2(e){
-                  if (e.keyCode == 13) {
-                         var suchwert2 = document.getElementById("suchKiste2").value;
-                         SetLoader();
-                         window.location.href = "#indexPage";
-                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?afForceMobile=true&afDisableMobileControls=true&symbol=" + suchwert2;
-                         document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
-                         document.getElementById("suchKiste2").style.visibility="hidden";
-                         document.getElementById("suchKiste3").style.visibility="hidden";
-                         document.getElementById("suchKiste4").style.visibility="hidden";
-                         document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_header.png";
-                         return false;
-                  }}
-         function FrameSearch3(e){
-                  if (e.keyCode == 13) {
-                         var suchwert3 = document.getElementById("suchKiste3").value;
-                         SetLoader();
-                         window.location.href = "#indexPage";
-                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?afForceMobile=true&afDisableMobileControls=true&symbol=" + suchwert3;
-                         document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
-                         document.getElementById("suchKiste2").style.visibility="hidden";
-                         document.getElementById("suchKiste3").style.visibility="hidden";
-                         document.getElementById("suchKiste4").style.visibility="hidden";
-                         document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_header.png";
-                         return false;
-                  }}
-         function FrameSearch4(e){
-                  if (e.keyCode == 13) {
-                         var suchwert4 = document.getElementById("suchKiste4").value;
-                         SetLoader();
-                         window.location.href = "#indexPage";
-                         document.getElementsByName("mainframe")[0].src="http://aktienfreunde.net/investment/lookupTickerSymbol?afForceMobile=true&afDisableMobileControls=true&symbol=" + suchwert4;
-                         document.getElementById("suchKiste1").style.visibility="hidden";  //versteckt wieder Suchfeld
-                         document.getElementById("suchKiste2").style.visibility="hidden";
-                         document.getElementById("suchKiste3").style.visibility="hidden";
-                         document.getElementById("suchKiste4").style.visibility="hidden";
-                         document.getElementById("headerSearchService").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchImpressum").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchDatenschutz").src="./images/icons/ic_action_search_header.png";
-                         document.getElementById("headerSearchIndex").src="./images/icons/ic_action_search_header.png";
-                         return false;
-                  }}
-</script>
+                </div>
         </body>
 
 </html>
