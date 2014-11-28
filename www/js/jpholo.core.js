@@ -255,7 +255,7 @@ function onDeviceReady() {
         // execute when app goes to pause (home button or opening other app)
         document.addEventListener("pause", onPause, false);
         // override default backbutton behavior with own
-        document.addEventListener("backbutton", pressBackButton, false);
+        //document.addEventListener("backbutton", pressBackButton, false);
         // override default menubutton behavior with own
         document.addEventListener("menubutton", onMenuKeyDown, false);
         // override default searchbutton behavior with own
