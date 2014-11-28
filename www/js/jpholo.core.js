@@ -248,7 +248,7 @@ function onDeviceReady() {
         catch(err){
                  txt="There was an error on this page.\n\n";
                  txt+="Error description: " + err.message + "\n\n";
-                 alert(txt);
+                 //alert(txt);
         }
         // execute when app resumes from pause
         document.addEventListener("resume", onResume, false);
