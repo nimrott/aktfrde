@@ -1,3 +1,0 @@
-http://stackoverflow.com/questions/676705/changing-data-content-on-an-object-tag-in-html
-
-http://stackoverflow.com/questions/22248670/html-object-tag-data-attribute-wont-update-with-jquery-change
