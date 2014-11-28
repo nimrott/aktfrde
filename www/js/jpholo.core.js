@@ -435,7 +435,8 @@ function pressBackButton() {
         // if panel is not open, then go on
         if (checkOpenPanels() === false) {
                 if ($.mobile.pageContainer.pagecontainer("getActivePage")[0].id === "indexPage") {
-                        navigator.app.exitApp(); // This will exit the app.
+                        document.getElementById("mainframe").contentWindow.history.go(-1);
+                        //navigator.app.exitApp(); // This will exit the app.
                         // homeButton(); // This will push the app to the background.
                 } else {
                         window.history.back();
