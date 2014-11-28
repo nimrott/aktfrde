@@ -254,7 +254,7 @@ function onDeviceReady() {
         document.addEventListener("resume", onResume, false);
         // execute when app goes to pause (home button or opening other app)
         document.addEventListener("pause", onPause, false);
-        // override default backbutton behavior with own
+        // override default backbutton behavior with own      IST AUSGEKLAMMERT UM IFRAME PROBLEME ZU LOESEN
         //document.addEventListener("backbutton", pressBackButton, false);
         // override default menubutton behavior with own
         document.addEventListener("menubutton", onMenuKeyDown, false);
@@ -435,7 +435,7 @@ function pressBackButton() {
         // if panel is not open, then go on
         if (checkOpenPanels() === false) {
                 if ($.mobile.pageContainer.pagecontainer("getActivePage")[0].id === "indexPage") {
-                        document.getElementsByName("mainframe")[0].contentWindow.history.go(-1);
+                        document.getElementsByName("mainframe")[0].contentWindow.history.go(-1);   //klappt aber schliesst app NICHT
                         //navigator.app.exitApp(); // This will exit the app.
                         // homeButton(); // This will push the app to the background.
                 } else {
