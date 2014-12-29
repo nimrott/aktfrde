@@ -819,7 +819,7 @@ function htmlClickEventHandlers(id, action) {
         $('#headerSearch' + id).off("click").on("click",
                 function () {
                  if (document.getElementById("suchKiste1").style.visibility == "hidden") {
-                                 if (screen.width < "750") {
+                                 if (screen.width < "800") {
                                          GoToSearch();
                                  } else {
                                  document.getElementById("suchKiste1").value="Name / ISIN suchen"; //stellt beim Sichtbarmachen wieder Standard her
