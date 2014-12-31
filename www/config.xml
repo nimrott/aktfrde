@@ -6,7 +6,7 @@
         id        = "net.aktienfreunde.app"
         version   = "1.0.1">
 
-    <name>Aktienfreunde</name>
+    <name>aktienfreunde</name>
 
     <description>
         Aktienfreunde. Deine kostenlose Depot und Portfoliouebersicht. Boerse und Aktien im Blick.
